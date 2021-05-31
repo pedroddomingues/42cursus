@@ -6,14 +6,14 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:36:34 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/05/31 16:40:52 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/05/31 20:05:57 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int isprint(int c)
+int ft_isprint(int c)
 {
     if (c >= 32 && c <= 126)
-        return c;
+        return (c);
     else
         return (0);
 }

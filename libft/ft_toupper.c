@@ -6,14 +6,14 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:34:35 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/05/31 16:35:02 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/05/31 20:05:55 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int to upper(int c)
+int ft_toupper(int c)
 {
     if (c >= 'a' && c <= 'z')
-        return c - 32;
+        return (c - 32);
     else
         return (c);
 }

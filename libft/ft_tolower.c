@@ -6,14 +6,14 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:28:25 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/05/31 16:31:18 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/05/31 20:05:56 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int tolower(int c)
+int ft_tolower(int c)
 {
     if (c >= 'A' && c <= 'Z')
-        return c + 32;
+        return (c + 32);
     else
         return (c);
 }
