@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/31 16:36:34 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/05/31 21:59:01 by pedro            ###   ########.fr       */
+/*   Created: 2021/05/31 22:00:24 by pedro             #+#    #+#             */
+/*   Updated: 2021/05/31 22:09:33 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+static int	ft_isalpha(int c)
 {
-	if (c >= 32 && c <= 126)
+	if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
+		return (c);
+	else
+		return (0);
+}
+
+static int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (c);
+	else
+		return (0);
+}
+
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (c);
 	else
 		return (0);
