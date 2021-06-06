@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/31 22:00:24 by pedro             #+#    #+#             */
-/*   Updated: 2021/05/31 23:22:23 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/06/01 20:41:23 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/02 20:32:04 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isalpha(int c)
+char	*strnstr(const char	*big, const char *little, size_t len)
 {
-	if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
-		return (c);
-	else
-		return (0);
-}
+	int		i;
+	int		j;
+	char	*ptr;
 
-static int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (c);
-	else
+	if (little[0] == '\0')
 		return (0);
-}
-
-int			ft_isalnum(int c)
-{
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (c);
-	else
-		return (0);
+	i = 0;
+	while (big[i] != '\0' && i < (int len))
+	{
+		j = 0;
+		if (big[i] == little[j])
+		{
+			ptr = &big[i];
+			while (big[i + j] == little[j] && i + j < (int len))
+			{
+				j++;
+			}
+			if (little[j] == '\0')
+				return (ptr);
+		}
+		i++;
+	}
+	return (0);
 }

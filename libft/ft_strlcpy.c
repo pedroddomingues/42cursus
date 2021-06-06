@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/31 22:00:24 by pedro             #+#    #+#             */
-/*   Updated: 2021/05/31 23:22:23 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/05/31 23:22:03 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/02 20:45:17 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isalpha(int c)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
-		return (c);
-	else
-		return (0);
-}
+	unsigned int	i;
+	unsigned int	j;
 
-static int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (c);
-	else
-		return (0);
-}
-
-int			ft_isalnum(int c)
-{
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (c);
-	else
-		return (0);
+	i = 0;
+	j = 0;
+	while (src[i] != '\0')
+	{
+		i++;
+	}
+	if (size != 0)
+	{
+		while (src[j] != '\0' && j < size - 1)
+		{
+			dest[j] = src[j];
+			j++;
+		}
+		dest[j] = '\0';
+	}
+	return (i);
 }

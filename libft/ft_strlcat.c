@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/31 22:00:24 by pedro             #+#    #+#             */
-/*   Updated: 2021/05/31 23:22:23 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/05/31 23:25:21 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/02 20:44:56 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isalpha(int c)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
-		return (c);
-	else
-		return (0);
-}
+	unsigned int i;
+	unsigned int j;
 
-static int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (c);
-	else
-		return (0);
-}
-
-int			ft_isalnum(int c)
-{
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (c);
-	else
-		return (0);
+	if (size <= ft_strlen(dest))
+		return (size + ft_strlen(src));
+	i = ft_strlen(dest);
+	j = 0;
+	while (src[j] != '\0' && i + 1 < size)
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (ft_strlen(dest) + ft_strlen(&src[j]));
 }

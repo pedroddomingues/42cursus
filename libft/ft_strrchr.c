@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/31 22:00:24 by pedro             #+#    #+#             */
-/*   Updated: 2021/05/31 23:22:23 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/06/02 20:35:50 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/02 20:38:17 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isalpha(int c)
+char	*strrchr(const char	*s, int	c)
 {
-	if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
-		return (c);
-	else
-		return (0);
-}
+	int	size;
 
-static int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (c);
-	else
-		return (0);
-}
-
-int			ft_isalnum(int c)
-{
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (c);
-	else
-		return (0);
+	size = ft_strlen(s);
+	while (size + 1)
+	{
+		if (s[size] == (char c))
+			return (&s[size]);
+		size--;
+	}
+	return (0);
 }
