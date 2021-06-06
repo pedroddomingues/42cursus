@@ -6,15 +6,14 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 12:04:05 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 12:41:29 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 15:55:27 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	if (!n)
-		return ();
-	ft_memset(s, 0, n)
+	if (n != 0)
+		ft_memset(s, 0, n);
 }

@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 11:51:27 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 12:42:05 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 13:46:11 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		dst[i] = src[i];
+		*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
 		i++;
 	}
 	return (dst);

@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 11:32:46 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 12:42:08 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 13:53:12 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	if (dst > src)
 	{
-		while (n--)
+		while (len--)
 		{
-			*(unsigned char *)(dst + n) = *(unsigned char *)(src + n);
+			*(unsigned char *)(dst + len) = *(unsigned char *)(src + len);
 		}
 	}
 	else
-		ft_memcpy(dst, src, n);
+		ft_memcpy(dst, src, len);
 	return (dst);
 }
