@@ -6,9 +6,11 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 23:23:21 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 12:00:34 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:42:27 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strlen(char *str)
 {

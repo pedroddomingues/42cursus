@@ -6,14 +6,16 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 23:26:48 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/05/31 23:27:23 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:41:24 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_atoi(char *str)
 {
-	int i;
-	int result;
+	int	i;
+	int	result;
 
 	i = 0;
 	result = 0;

@@ -6,9 +6,11 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:36:34 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 11:56:25 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:41:45 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isprint(int c)
 {

@@ -6,9 +6,11 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 16:34:31 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 11:56:55 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:41:58 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

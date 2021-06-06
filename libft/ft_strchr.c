@@ -6,9 +6,11 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 20:39:43 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/02 20:44:10 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:42:14 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*strchr(const char *s, int c)
 {

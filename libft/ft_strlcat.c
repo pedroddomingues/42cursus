@@ -6,9 +6,11 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 23:25:21 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 11:59:45 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:42:18 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 unsigned int	ft_strlcat(char *dst, char *src, size_t size)
 {
