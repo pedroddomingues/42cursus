@@ -6,13 +6,13 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 23:23:21 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/05/31 23:23:23 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:00:34 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*(str + i) != 0)

@@ -6,14 +6,14 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 23:24:19 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/05/31 23:25:48 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:01:44 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int	c;
-	int				diff;
+	size_t	c;
+	size_t	diff;
 
 	c = 0;
 	diff = 0;

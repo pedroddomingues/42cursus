@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/31 22:00:24 by pedro             #+#    #+#             */
-/*   Updated: 2021/06/06 11:56:15 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/06/06 11:32:46 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/06 11:57:41 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (c);
+	if (dst > src)
+	{
+		while (n--)
+		{
+			*(unsigned char *)(dst + n) = *(unsigned char *)(src + n);
+		}
+	}
 	else
-		return (0);
+		ft_memcpy(dst, src, n);
+	return (dst);
 }

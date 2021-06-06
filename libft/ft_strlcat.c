@@ -6,25 +6,25 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 23:25:21 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/02 20:44:56 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 11:59:45 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcat(char *dst, char *src, size_t size)
 {
-	unsigned int i;
-	unsigned int j;
+	size_t	i;
+	size_t	j;
 
-	if (size <= ft_strlen(dest))
+	if (size <= ft_strlen(dst))
 		return (size + ft_strlen(src));
-	i = ft_strlen(dest);
+	i = ft_strlen(dst);
 	j = 0;
 	while (src[j] != '\0' && i + 1 < size)
 	{
-		dest[i] = src[j];
+		dst[i] = src[j];
 		i++;
 		j++;
 	}
-	dest[i] = '\0';
-	return (ft_strlen(dest) + ft_strlen(&src[j]));
+	dst[i] = '\0';
+	return (ft_strlen(dst) + ft_strlen(&src[j]));
 }

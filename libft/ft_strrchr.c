@@ -6,13 +6,13 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 20:35:50 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/02 20:38:17 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:02:42 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*strrchr(const char	*s, int	c)
 {
-	int	size;
+	size_t	size;
 
 	size = ft_strlen(s);
 	while (size + 1)
