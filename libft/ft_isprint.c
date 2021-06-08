@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:36:34 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 12:41:45 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 16:27:49 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
-		return (c);
+		return (1);
 	else
 		return (0);
 }

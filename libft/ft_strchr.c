@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 20:39:43 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 14:01:14 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 16:29:27 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strchr(const char *s, int c)
 	size = ft_strlen(s);
 	i = 0;
 	str = (char *)s;
-	while (i <= size + 1)
+	while (i <= size)
 	{
 		if (str[i] == (char) c)
 			return (&str[i]);

@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 11:32:46 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 13:53:12 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/06 16:26:26 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
+	if (!dst && !src)
+		return (dst);
 	if (dst > src)
 	{
 		while (len--)

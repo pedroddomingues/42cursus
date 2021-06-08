@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 16:53:26 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/07 22:23:26 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/06/07 22:22:33 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/07 22:22:38 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	ft_isspace(char c)
 {
-	char	*str;
-
-	str = malloc(sizeof(char) * (len + 1));
-	return (ft_memmove(str, &s[start], len));
+	if (c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == '\v' || c == '\f')
+		return (1);
+	return (0);
 }
