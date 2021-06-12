@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 16:53:26 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/08 00:00:58 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/06/10 21:03:19 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/10 21:05:04 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strrev(char *str)
 {
-	char	*str;
+	size_t	i;
+	size_t	len;
+	char	tmp;
 
-	str = malloc(sizeof(char) * (len + 1));
-	if (start >= ft_strlen(s))
-		return ((char *)ft_memset(str, 0, 1));
-	if (!str)
-		return (NULL);
-	ft_memset(str + len, 0, 1);
-	return (ft_memmove(str, &s[start], len));
+	if (!str || !*str)
+		return (str);
+	len = ft_strlen(str);
+	i = 0;
+	while (i < len / 2)
+	{
+		tmp = str[i];
+		str[i] = str[len - 1 - i];
+		str[len - 1 - i] = tmp;
+		i++;
+	}
+	return (str);
 }

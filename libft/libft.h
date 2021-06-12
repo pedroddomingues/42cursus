@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 16:09:20 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/11 23:32:11 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,12 @@ t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 
 int		ft_isspace(char c);
+
+char	*ft_strrev(char *str);
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
+
+char	*ft_strnochr(const char *s, int c);
+
+char	*ft_strnorchr(const char *s, int c);
 #endif
