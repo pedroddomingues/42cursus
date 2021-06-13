@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/11 23:32:11 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/13 15:11:08 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strctrim(char const *s1, char c);
 
 char	**ft_split(char const *s, char c);
-
-int		ft_iterative_power(int nb, int power);
 
 char	*ft_itoa(int n);
 

@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 14:02:16 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/13 14:02:54 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/13 15:16:16 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 		result[i] = f(i, s[i]);
 		i++;
 	}
-	result[x] = '\0';
+	result[i] = '\0';
 	return (result);
 }
