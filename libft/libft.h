@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/13 15:11:08 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/15 13:06:37 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 size_t	ft_strlen(char const *str);
 
-size_t	ft_strlcpy(char *restrict dst, const char *src, size_t size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
-size_t	ft_strlcat(char *restrict dst, const char *src, size_t size);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 char	*ft_strchr(const char *str, int c);
 
