@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:10:19 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 16:38:25 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/05 17:07:31 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	appendline(char **s, char **line)
 		len++;
 	if ((*s)[len] == '\n')
 	{
-		*line = ft_strsub(*s, 0, len);
+		*line = ft_substr(*s, 0, len);
 		tmp = ft_strdup(&((*s)[len + 1]));
 		free(*s);
 		*s = tmp;
