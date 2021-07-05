@@ -6,11 +6,11 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:10:19 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 17:07:31 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/05 17:16:37 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line"
+#include "get_next_line.h"
 
 static int	appendline(char **s, char **line)
 {
