@@ -6,14 +6,12 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:53:02 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 17:15:00 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/05 17:22:47 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# define FD_SIZE 4096
+#ifndef GET_NEXT_LINE__UTILS_H
+# define GET_NEXT_LINE__UTILS_H
 
 # include <stdlib.h>
 # include <stdio.h>
