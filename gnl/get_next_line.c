@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:10:19 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 18:23:43 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/05 18:31:00 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	output(char **s, char **line, int ret, int fd)
 
 int			get_next_line(const int fd, char **line)
 {
-	static char	*res[4096];
+	static char	*res[500];
 	char		*buff;
 	char		*tmp;
 	int			bytes_read;
