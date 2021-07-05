@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:10:19 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 17:16:37 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/05 17:18:26 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ int			get_next_line(const int fd, char **line)
 			break ;
 		bytes_read = read(fd, buff, BUFF_SIZE);
 	}
-	return (output(s, line, bytes_read, fd));
+	return (output(res, line, bytes_read, fd));
 }

@@ -10,6 +10,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include "../libft/libft.h"
+# include "get_next_line_utils.h"
 
 int		get_next_line(const int fd, char **line);
 
