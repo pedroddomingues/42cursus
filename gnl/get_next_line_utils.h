@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:53:02 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 18:03:55 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/05 18:05:06 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
+
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 void	*ft_memmove(void *dst, const void *src, size_t len);
 

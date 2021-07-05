@@ -6,11 +6,26 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:53:02 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 18:03:43 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/05 18:04:54 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (!dst && !src)
+		return (dst);
+	while (i < n)
+	{
+		*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
+		i++;
+	}
+	return (dst);
+}
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
