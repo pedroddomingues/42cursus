@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:10:19 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 17:18:26 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/05 18:23:43 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			get_next_line(const int fd, char **line)
 	char		*tmp;
 	int			bytes_read;
 
-	buff = ft_calloc(BUFF_SIZE + 1, sizeof(char));
+	buff = (char *)ft_calloc(BUFF_SIZE + 1, sizeof(char));
 	bytes_read = read(fd, buff, BUFF_SIZE);
 	if (fd < 0 || line == NULL || buff == NULL || bytes_read < 0)
 		return (-1);
