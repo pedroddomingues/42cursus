@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:53:02 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 17:16:22 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/05 18:02:35 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,56 @@ void	ft_strdel(char **as)
 		free(*as);
 		*as = NULL;
 	}
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
+	int		size;
+	char	*str;
+
+	size = ft_strlen(s);
+	i = 0;
+	str = (char *)s;
+	while (i <= size)
+	{
+		if (str[i] == (char) c)
+			return (&str[i]);
+		i++;
+	}
+	return (0);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*str;
+	size_t	len;
+	size_t	i;
+
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	str = malloc(len + 1);
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (*s1)
+		str[i++] = *s1++;
+	while (*s2)
+		str[i++] = *s2++;
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+
+	str = malloc(sizeof(char) * (len + 1));
+	if (start >= ft_strlen(s))
+		return ((char *)ft_memset(str, 0, 1));
+	if (!str)
+		return (NULL);
+	ft_memset(str + len, 0, 1);
+	return (ft_memmove(str, &s[start], len));
 }
