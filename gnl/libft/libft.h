@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/29 23:30:12 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/06/15 13:06:37 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,4 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n);
 char	*ft_strnochr(const char *s, int c);
 
 char	*ft_strnorchr(const char *s, int c);
-
-char	*ft_strcpy(char *dst, const char *src);
 #endif
