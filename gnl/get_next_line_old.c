@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/13 15:00:35 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/13 15:25:35 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/06/22 18:02:24 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/22 18:42:28 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_lstsize(t_list *lst)
+int get_next_line(int fd, char **line)
 {
-	int	count;
+    char *buff;
 
-	count = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		count++;
-	}
-	return (count);
+    buff = malloc(BUFFER_SIZE + 1);
+    read(fd, buff, BUFFER_SIZE)
 }
