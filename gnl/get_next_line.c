@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:10:19 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 18:31:00 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/20 15:57:30 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int			get_next_line(const int fd, char **line)
 	bytes_read = read(fd, buff, BUFF_SIZE);
 	if (fd < 0 || line == NULL || buff == NULL || bytes_read < 0)
 		return (-1);
+	buff[BUFF_SIZE] = '\0';
 	while (bytes_read > 0)
 	{
 		if (res[fd] == NULL)
