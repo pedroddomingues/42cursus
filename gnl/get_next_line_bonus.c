@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 16:10:19 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/26 15:18:03 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/07/26 13:37:57 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/07/26 15:25:02 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	search_line_break(char **buff, size_t *nlchar_position)
 {
@@ -60,16 +60,16 @@ static char	*cut_line(char **buff, size_t *nlchar_position)
 	return (line);
 }
 
-static void	set_buff(char **buff, char **tmp, char **result)
+static void	set_buff(char *buff, char *tmp, char *result)
 {
-	if (!*buff)
-		*buff = ft_strdup(*result);
+	if (!buff)
+		buff = ft_strdup(result);
 	else
 	{
-		*tmp = ft_strdup(*buff);
-		free(*buff);
-		*buff = ft_strjoin(*tmp, *result);
-		free(*tmp);
+		tmp = ft_strdup(buff);
+		free(buff);
+		buff = ft_strjoin(tmp, result);
+		free(tmp);
 	}
 }
 
@@ -77,7 +77,7 @@ char	*get_next_line(int fd)
 {
 	size_t		nlchar_position;
 	size_t		bytes_read;
-	static char	*buff;
+	static char	**buff;
 	char		*result;
 	char		*tmp;
 
@@ -89,11 +89,11 @@ char	*get_next_line(int fd)
 	while (bytes_read > 0)
 	{
 		(result)[bytes_read] = '\0';
-		set_buff(&buff, &tmp, &result);
-		if (search_line_break(&buff, &nlchar_position))
+		set_buff(buff[fd], tmp, result);
+		if (search_line_break(&buff[fd], &nlchar_position))
 			break ;
 		bytes_read = read(fd, result, BUFFER_SIZE);
 	}
 	free(result);
-	return (cut_line(&buff, &nlchar_position));
+	return (cut_line(&buff[fd], &nlchar_position));
 }
