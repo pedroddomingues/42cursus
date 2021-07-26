@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:37:57 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/26 15:25:02 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/26 15:32:14 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || read(fd, NULL, 0) != 0 || BUFFER_SIZE < 0)
 		return (NULL);
 	result = malloc(BUFFER_SIZE + 1);
+	tmp = malloc(BUFFER_SIZE + 1);
 	bytes_read = read(fd, result, BUFFER_SIZE);
 	nlchar_position = 0;
 	while (bytes_read > 0)
