@@ -6,22 +6,22 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:37:57 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/26 15:38:24 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/26 16:19:14 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static int	search_line_break(char **buff, size_t *nlchar_position)
+static int	search_line_break(char *buff, size_t *nlchar_position)
 {
 	int	i;
 
 	i = 0;
-	if (!*buff)
+	if (!buff)
 		return (0);
-	while ((*buff)[i] != '\0')
+	while (buff[i] != '\0')
 	{
-		if ((*buff)[i] == '\n')
+		if (buff[i] == '\n')
 		{
 			*nlchar_position = i;
 			return (1);
@@ -31,7 +31,7 @@ static int	search_line_break(char **buff, size_t *nlchar_position)
 	return (0);
 }
 
-static char	*cut_line(char **buff, size_t *nlchar_position)
+static char	*cut_line(char *buff, size_t *nlchar_position)
 {
 	int		i;
 	char	*tmp;
@@ -39,22 +39,22 @@ static char	*cut_line(char **buff, size_t *nlchar_position)
 
 	i = 0;
 	line = NULL;
-	if (!*buff)
+	if (!buff)
 		return (NULL);
-	tmp = ft_strdup(*buff);
+	tmp = ft_strdup(buff);
 	if (search_line_break(buff, nlchar_position))
 	{
-		line = ft_substr(*buff, 0, *nlchar_position + 1);
-		free(*buff);
-		*buff = ft_substr(tmp, *nlchar_position + 1, ft_strlen(tmp));
+		line = ft_substr(buff, 0, *nlchar_position + 1);
+		free(buff);
+		buff = ft_substr(tmp, *nlchar_position + 1, ft_strlen(tmp));
 	}
 	else
 	{
 		i = ft_strlen(tmp);
 		if (i > 0)
 			line = ft_substr(tmp, 0, i);
-		free(*buff);
-		*buff = NULL;
+		free(buff);
+		buff = NULL;
 	}
 	free(tmp);
 	return (line);
@@ -91,10 +91,10 @@ char	*get_next_line(int fd)
 	{
 		(result)[bytes_read] = '\0';
 		set_buff(buff[fd], tmp, result);
-		if (search_line_break(&buff[fd], &nlchar_position))
+		if (search_line_break(buff[fd], &nlchar_position))
 			break ;
 		bytes_read = read(fd, result, BUFFER_SIZE);
 	}
 	free(result);
-	return (cut_line(&buff[fd], &nlchar_position));
+	return (cut_line(buff[fd], &nlchar_position));
 }
