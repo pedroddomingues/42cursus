@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:37:57 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/26 15:32:14 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/26 15:36:47 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*get_next_line(int fd)
 {
 	size_t		nlchar_position;
 	size_t		bytes_read;
-	static char	**buff;
+	static char	*buff[1024];
 	char		*result;
 	char		*tmp;
 
