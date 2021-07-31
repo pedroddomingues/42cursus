@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/22 18:02:24 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/22 18:42:28 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/07/29 19:30:40 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/07/30 20:54:20 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int get_next_line(int fd, char **line)
-{
-    char *buff;
+#ifndef FT_PRINTF_H
 
-    buff = malloc(BUFFER_SIZE + 1);
-    read(fd, buff, BUFFER_SIZE)
-}
+# define FT_PRINTF_H
+
+# include "../libft/libft.h"
+# include <stdarg.h>
+
+# define CONVERSIONS	"cspdiuxX%"
+
+# define HEXALOWER		"0123456789abcdef"
+# define HEXAUPPER		"0123456789ABCDEF"
+
+int			ft_printf(const char *str, ...);
+
+#endif

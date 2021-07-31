@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/29 23:30:12 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/07/30 20:58:33 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 t_list	*ft_lstlast(t_list *lst);
 
-void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *n);
 
-void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *n);
 
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 
