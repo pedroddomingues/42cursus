@@ -6,15 +6,13 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 15:45:46 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/02 21:20:27 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/03 01:57:23 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
-#include <stdio.h>
 
-int	print_c(char *str, va_list ap)
+static int	print_c(char *str, va_list ap)
 {
 	char	c;
 
@@ -27,7 +25,7 @@ int	print_c(char *str, va_list ap)
 	return (1);
 }
 
-int	print_s(char *str, va_list ap)
+static int	print_s(char *str, va_list ap)
 {
 	char	*s;
 	int		len;
@@ -39,7 +37,7 @@ int	print_s(char *str, va_list ap)
 	return (len);
 }
 
-int	print_d(va_list ap)
+static int	print_d(va_list ap)
 {
 	int		number;
 
@@ -48,7 +46,7 @@ int	print_d(va_list ap)
 	return (ft_strlen(ft_itoa(number)));
 }
 
-int	print_x(char *str, va_list ap)
+static int	print_x(char *str, va_list ap)
 {
 	int				i;
 	unsigned int	number;
@@ -62,7 +60,7 @@ int	print_x(char *str, va_list ap)
 	return (i);
 }
 
-int	check_conversion(char *str, va_list ap)
+static int	check_conversion(char *str, va_list ap)
 {
 	int	i;
 
@@ -102,22 +100,22 @@ int	ft_printf(const char *str, ...)
 	return (i);
 }
 
-int	main(void)
-{
-	char			str[] = "testandoooooooooooon";
-	char			c;
-	int				i;
-	unsigned int	a;
-	char			*s;
+// int		main(void)
+// {
+// 	char			str[] = "testandoooooooooooon";
+// 	char			c;
+// 	int				i;
+// 	unsigned int	a;
+// 	char			*s;
 
-	c = 'x';
-	a = 66789;
-	s = &c;
-	i = ft_printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%p\n",
-			c, c, c, c, c, c, c, c, str, a, a, s);
-	printf("\n\n%d\n\n", i);
-	i = printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%p\n",
-			c, c, c, c, c, c, c, c, str, a, a, s);
-	printf("\n\n%d\n\n", i);
-	return (1);
-}
+// 	c = 'x';
+// 	a = 66789;
+// 	s = &c;
+// 	i = ft_printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%p\n",
+// 			c, c, c, c, c, c, c, c, str, a, a, s);
+// 	printf("\n\n%d\n\n", i);
+// 	i = printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%p\n",
+// 			c, c, c, c, c, c, c, c, str, a, a, s);
+// 	printf("\n\n%d\n\n", i);
+// 	return (1);
+// }

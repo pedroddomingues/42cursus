@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 19:30:40 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/30 20:54:20 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/03 01:51:37 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 # define FT_PRINTF_H
 
-# include "../libft/libft.h"
+# include "libft/libft.h"
 # include <stdarg.h>
+# include <stdio.h>
 
 # define CONVERSIONS	"cspdiuxX%"
 
