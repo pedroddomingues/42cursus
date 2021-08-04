@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 15:45:46 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/03 01:57:23 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/03 19:37:07 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,13 @@ static int	print_s(char *str, va_list ap)
 
 	s = va_arg(ap, char *);
 	len = ft_strlen(s);
-	ft_putstr_fd(s, 1);
+	if (s)
+		ft_putstr_fd(va_arg(ap, char *), 1);
+	// {
+	// 	write(1, "(null)", 6);
+	// 	len = 6;
+	// }
+	// else
 	str++;
 	return (len);
 }
@@ -106,15 +112,15 @@ int	ft_printf(const char *str, ...)
 // 	char			c;
 // 	int				i;
 // 	unsigned int	a;
-// 	char			*s;
+// 	char			*s = NULL;
 
 // 	c = 'x';
 // 	a = 66789;
 // 	s = &c;
-// 	i = ft_printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%p\n",
+// 	i = ft_printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%s\n",
 // 			c, c, c, c, c, c, c, c, str, a, a, s);
 // 	printf("\n\n%d\n\n", i);
-// 	i = printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%p\n",
+// 	i = printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%s\n",
 // 			c, c, c, c, c, c, c, c, str, a, a, s);
 // 	printf("\n\n%d\n\n", i);
 // 	return (1);
