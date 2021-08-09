@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 19:37:17 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/02 19:06:15 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/06 21:47:03 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	has_duplicates(char *str, int len)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < len)
@@ -34,7 +34,7 @@ static int	has_duplicates(char *str, int len)
 
 static int	has_signals(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -64,9 +64,9 @@ static void	ft_putnbr_new(int nbr, char *base, int size, int fd)
 	write(fd, &c, 1);
 }
 
-void		ft_putnbr_base_fd(int nbr, char *base, int fd)
+void	ft_putnbr_base_fd(int nbr, char *base, int fd)
 {
-	int baselen;
+	int	baselen;
 
 	baselen = ft_strlen(base);
 	if (baselen < 2 || has_duplicates(base, baselen) || has_signals(base))

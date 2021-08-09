@@ -6,12 +6,12 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 16:53:02 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/07/05 18:05:06 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/08 02:16:40 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE__UTILS_H
-# define GET_NEXT_LINE__UTILS_H
+#ifndef GET_NEXT_LINE_UTILS_H
+# define GET_NEXT_LINE_UTILS_H
 
 # include <stdlib.h>
 # include <stdio.h>

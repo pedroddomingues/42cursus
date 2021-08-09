@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 15:45:46 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/03 19:37:07 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/06 23:09:17 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,57 @@ static int	print_s(char *str, va_list ap)
 
 	s = va_arg(ap, char *);
 	len = ft_strlen(s);
-	if (s)
-		ft_putstr_fd(va_arg(ap, char *), 1);
-	// {
-	// 	write(1, "(null)", 6);
-	// 	len = 6;
-	// }
-	// else
 	str++;
+	if (s)
+		ft_putstr_fd(s, 1);
+	else
+	{
+		ft_putstr_fd("(null)", 1);
+		len = 6;
+	}
 	return (len);
 }
 
 static int	print_d(va_list ap)
 {
 	int		number;
+	int		len;
+	char	*number_str;
 
 	number = va_arg(ap, int);
+	ft_putnbr_fd(number, 1);
+	number_str = ft_itoa(number);
+	len = ft_strlen(number_str);
+	free(number_str);
+	return (len);
+}
+
+static int	print_u(va_list ap)
+{
+	unsigned int	number;
+
+	number = va_arg(ap, unsigned int);
 	ft_putnbr_fd(number, 1);
 	return (ft_strlen(ft_itoa(number)));
 }
 
 static int	print_x(char *str, va_list ap)
 {
-	int				i;
 	unsigned int	number;
+	char			*number_str;
+	int				width;
 
-	number = va_arg(ap, unsigned int);
-	i = 5;
+	number = va_arg(ap, int);
+	// write(1, "0x", 2);
+	// i = 2;
 	if (*str == 'X')
-		ft_putnbr_base_fd(number, HEXAUPPER, 1);
+		number_str = ft_itoa_base(number, HEXAUPPER);
 	else
-		ft_putnbr_base_fd(number, HEXALOWER, 1);
-	return (i);
+		number_str = ft_itoa_base(number, HEXALOWER);
+	ft_putstr_fd(number_str, 1);
+	width = ft_strlen(number_str);
+	free(number_str);
+	return (width);
 }
 
 static int	check_conversion(char *str, va_list ap)
@@ -75,8 +94,10 @@ static int	check_conversion(char *str, va_list ap)
 		i += print_c(str, ap);
 	else if (*str == 's')
 		i += print_s(str, ap);
-	else if (*str == 'd' || *str == 'i' || *str == 'u')
+	else if (*str == 'd' || *str == 'i')
 		i += print_d(ap);
+	else if (*str == 'u')
+		i += print_u(ap);
 	else if (*str == 'x' || *str == 'X' || *str == 'p')
 		i += print_x(str, ap);
 	// else if (*str == 'p')
@@ -114,14 +135,16 @@ int	ft_printf(const char *str, ...)
 // 	unsigned int	a;
 // 	char			*s = NULL;
 
-// 	c = 'x';
+// 	// c = 'x';
 // 	a = 66789;
-// 	s = &c;
-// 	i = ft_printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%s\n",
-// 			c, c, c, c, c, c, c, c, str, a, a, s);
-// 	printf("\n\n%d\n\n", i);
-// 	i = printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%s\n",
-// 			c, c, c, c, c, c, c, c, str, a, a, s);
-// 	printf("\n\n%d\n\n", i);
+// 	// s = &c;
+// 	// i = ft_printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%s\n",
+// 	// 		c, c, c, c, c, c, c, c, str, a, a, s);
+// 	// printf("\n\n%d\n\n", i);
+// 	// i = printf("a%clo tudo b%c%cem%c c%%om%c%c%co va%ci\n%s\n%u\n%x\n%s\n",
+// 	// 		c, c, c, c, c, c, c, c, str, a, a, s);
+// 	// printf("\n\n%d\n\n", i);
+// 	// printf("%s", s);
+// 	ft_printf("%x", a);
 // 	return (1);
 // }

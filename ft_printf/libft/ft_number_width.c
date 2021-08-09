@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_number_width.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/10 21:03:19 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/06 22:39:21 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/08/06 21:40:50 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/08/06 23:06:00 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrev(char *str)
+int	ft_number_width(int n, char *base)
 {
-	size_t	i;
-	size_t	len;
-	char	tmp;
+	int	width;
 
-	if (!str || !*str)
-		return (str);
-	len = ft_strlen(str);
-	i = 0;
-	while (i < len / 2)
+	width = 1;
+	while (n > 0)
 	{
-		tmp = str[i];
-		str[i] = str[len - 1 - i];
-		str[len - 1 - i] = tmp;
-		i++;
+		n /= ft_strlen(base);
+		width++;
 	}
-	return (str);
+	return (width);
 }
