@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/06 22:53:42 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/11 23:00:53 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 
 char	*ft_itoa_base(int n, char *base);
+
+char	*ft_ullitoa_base(unsigned long long int n, char *base);
 
 int		ft_signal(int n);
 

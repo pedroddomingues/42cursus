@@ -1,23 +1,26 @@
 CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
+RM = rm -rf
 CC = gcc
 AR = ar rcs
 DIR_OBJ = obj
+SRC = src
 LIBFT = libft/libft.a
 NAME = libftprintf.a
 
-SRC_M = ft_printf.c
+SRC_M = ft_printf.c printers.c
 
-OBJ_M = $(SRC_M:.c=.o)
+OBJ_M = $(addprefix $(DIR_OBJ)/, $(SRC_M:.c=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJ_M) compile_libft
-	$(AR) $(NAME) $(OBJ_M)
+	@$(AR) $(NAME) $(OBJ_M)
 
-$(OBJ_M): $(SRC_M)
+$(OBJ_M): $(addprefix $(SRC)/, $(SRC_M))
+	@mkdir $(DIR_OBJ)
 	@echo "Mandatory objects outdated in ft_printf! Compiling again..."
-	$(CC) $(CFLAGS) -c $^
+	@$(CC) $(CFLAGS) -c $^
+	@mv -f $(SRC_M:.c=.o) $(DIR_OBJ)
 	@echo "Mandatory Compilation Complete in ft_printf!"
 
 bonus: $(OBJ_B) compile_libft
@@ -35,8 +38,8 @@ compile_libft:
 
 clean:
 	@echo "Cleaning up object files in ft_printf..."
-	@make clean -C ../libft
-	$(RM) $(OBJ_M) $(OBJ_B)
+	@make clean -C libft
+	@$(RM) $(OBJ_M) $(OBJ_B) $(DIR_OBJ)
 
 fclean: clean
 	@$(RM) $(LIBFT)
@@ -46,7 +49,7 @@ fclean: clean
 
 norminette:
 	@echo "\nChecking norm for ft_printf..."
-	@norminette -R CheckForbiddenSourceHeader $(SRC_M)
+	@norminette -R CheckForbiddenSourceHeader $(addprefix $(SRC)/, $(SRC_M))
 	@make norminette -C libft/
 
 git:
