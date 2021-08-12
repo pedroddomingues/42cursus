@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 00:02:59 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/12 19:41:43 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/12 19:50:13 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ int	print_x(char *str, unsigned long int arg)
 	{
 		width += 2;
 		ft_putstr_fd("0x", 1);
+		number_str = ft_ullitoa_base(arg, HEXAUPPER);
 	}
-	if (*str == 'X')
+	else if (*str == 'X')
 		number_str = ft_ullitoa_base((unsigned int) arg, HEXAUPPER);
 	else
 		number_str = ft_ullitoa_base((unsigned int) arg, HEXALOWER);
