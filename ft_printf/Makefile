@@ -17,7 +17,7 @@ $(NAME): $(OBJ_M) compile_libft
 	@$(AR) $(NAME) $(OBJ_M)
 
 $(OBJ_M): $(addprefix $(SRC)/, $(SRC_M))
-	@mkdir $(DIR_OBJ)
+	@mkdir -p $(DIR_OBJ)
 	@echo "Mandatory objects outdated in ft_printf! Compiling again..."
 	@$(CC) $(CFLAGS) -c $^
 	@mv -f $(SRC_M:.c=.o) $(DIR_OBJ)

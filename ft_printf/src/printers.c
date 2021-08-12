@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 00:02:59 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/12 00:24:03 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/12 19:41:43 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int	print_x(char *str, unsigned long int arg)
 		ft_putstr_fd("0x", 1);
 	}
 	if (*str == 'X')
-		number_str = ft_ullitoa_base(arg, HEXAUPPER);
+		number_str = ft_ullitoa_base((unsigned int) arg, HEXAUPPER);
 	else
-		number_str = ft_ullitoa_base(arg, HEXALOWER);
+		number_str = ft_ullitoa_base((unsigned int) arg, HEXALOWER);
 	ft_putstr_fd(number_str, 1);
 	width += ft_strlen(number_str);
 	free(number_str);
