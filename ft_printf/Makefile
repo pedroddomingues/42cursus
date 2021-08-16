@@ -2,8 +2,8 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 CC = gcc
 AR = ar rcs
-DIR_OBJ = obj
-SRC = src
+DIR_OBJ = mandatory/obj
+SRC = mandatory/src
 LIBFT = libft/libft.a
 NAME = libftprintf.a
 

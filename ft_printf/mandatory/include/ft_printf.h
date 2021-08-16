@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 19:30:40 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/12 00:24:30 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/16 16:59:20 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define FT_PRINTF_H
 
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 # include <stdarg.h>
 # include <stdio.h>
 
