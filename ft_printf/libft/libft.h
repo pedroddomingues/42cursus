@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/11 23:00:53 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/28 00:43:40 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 void	ft_putnbr_base_fd(int nbr, char *base, int fd);
+
+void	ft_putnchar_fd(int n, char c, int fd);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 

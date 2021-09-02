@@ -2,35 +2,39 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 CC = gcc
 AR = ar rcs
-DIR_OBJ = mandatory/obj
-SRC = mandatory/src
+DIR_OBJ = obj
+M_DIR = mandatory/src
+B_DIR = bonus/src
 LIBFT = libft/libft.a
 NAME = libftprintf.a
 
 SRC_M = ft_printf.c printers.c
+SRC_B = ft_printf.c printers.c
 
-OBJ_M = $(addprefix $(DIR_OBJ)/, $(SRC_M:.c=.o))
+OBJ_M = $(addprefix mandatory/$(DIR_OBJ)/, $(SRC_M:.c=.o))
+OBJ_B = $(addprefix bonus/$(DIR_OBJ)/, $(SRC_B:.c=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJ_M) compile_libft
 	@$(AR) $(NAME) $(OBJ_M)
 
-$(OBJ_M): $(addprefix $(SRC)/, $(SRC_M))
-	@mkdir -p $(DIR_OBJ)
+$(OBJ_M): $(addprefix $(M_DIR)/, $(SRC_M))
+	@mkdir -p $(addprefix mandatory/, $(DIR_OBJ))
 	@echo "Mandatory objects outdated in ft_printf! Compiling again..."
 	@$(CC) $(CFLAGS) -c $^
-	@mv -f $(SRC_M:.c=.o) $(DIR_OBJ)
-	@echo "Mandatory Compilation Complete in ft_printf!"
+	@mv -f $(SRC_M:.c=.o) $(addprefix mandatory/, $(DIR_OBJ))
 
 bonus: $(OBJ_B) compile_libft
 	@$(AR) $(NAME) $(OBJ_B)
 	@echo "Bonuses Compilation Complete in ft_printf!"
 
-$(OBJ_B): $(SRC_B)
+$(OBJ_B): $(addprefix $(B_DIR)/, $(SRC_B))
+	@mkdir -p $(addprefix bonus/, $(DIR_OBJ))
 	@echo "Bonus objects outdated in ft_printf! Compiling again..."
 	@$(CC) $(CFLAGS) -c $^
-	@mv -f $(SOURCE_B:.c=.o) $(DIR_OBJ)
+	@mv -f $(SRC_B:.c=.o) $(addprefix bonus/, $(DIR_OBJ))
+	@echo "Bonus Compilation Complete in ft_printf!"
 
 compile_libft:
 	@make all -C libft
@@ -49,7 +53,7 @@ fclean: clean
 
 norminette:
 	@echo "\nChecking norm for ft_printf..."
-	@norminette -R CheckForbiddenSourceHeader $(addprefix $(SRC)/, $(SRC_M))
+	@norminette -R CheckForbiddenSourceHeader $(addprefix $(M_DIR)/, $(SRC_M))
 	@make norminette -C libft/
 
 git:
