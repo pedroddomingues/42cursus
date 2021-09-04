@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 23:10:04 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/06 21:47:51 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/06 23:02:22 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char	*ft_itoa_base(int n, char *base)
 {
+	const char		neg = (n < 0);
 	char			*num;
 	int				rem;
-	int				len;
-	size_t			i;
-	const char		neg = (n < 0);
+	int				base_len;
+	int				i;
 
 	if (n == INT_MIN)
 		return (ft_strdup("-2147483648"));
@@ -28,11 +28,11 @@ char	*ft_itoa_base(int n, char *base)
 	if (neg)
 		n = -n;
 	i = 0;
-	len = ft_strlen(base);
+	base_len = ft_strlen(base);
 	while (i < ft_number_width(n, base))
 	{
-		rem = n % len;
-		n = n / len;
+		rem = n % base_len;
+		n = n / base_len;
 		num[i] = base[rem];
 		i++;
 	}

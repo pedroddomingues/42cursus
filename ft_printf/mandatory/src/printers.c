@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 00:02:59 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/09/01 23:38:04 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/09/04 16:31:04 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int	print_c(char *str, int arg)
 {
-	char	c;
+	write(1, &arg, 1);
+	str++;
+	return (1);
+}
 
-	if (*str == '%')
-		c = '%';
-	else
-		c = arg;
-	write(1, &c, 1);
+int	print_percent(char *str)
+{
+	write(1, "%", 1);
 	str++;
 	return (1);
 }
@@ -28,17 +29,14 @@ int	print_c(char *str, int arg)
 int	print_s(char *str, char *arg)
 {
 	int	len;
-	char	*s;
 
 	if (arg == NULL)
 	{
 		ft_putstr_fd("(null)", 1);
 		return (6);
 	}
-	s = ft_strdup(arg);
-	len = ft_strlen(s);
-	ft_putstr_fd(s, 1);
-	free(s);
+	len = ft_strlen(arg);
+	ft_putstr_fd(arg, 1);
 	str++;
 	return (len);
 }

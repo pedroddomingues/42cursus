@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/06 21:57:18 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/08/28 00:43:40 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,15 @@ char	*ft_strtrim(char const *s1, char const *set);
 
 char	*ft_strctrim(char const *s1, char c);
 
-size_t	ft_number_width(int n, char *base);
+int		ft_number_width(int n, char *base);
 
 char	**ft_split(char const *s, char c);
 
 char	*ft_itoa(int n);
 
 char	*ft_itoa_base(int n, char *base);
+
+char	*ft_ullitoa_base(unsigned long long int n, char *base);
 
 int		ft_signal(int n);
 
@@ -98,6 +100,8 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 void	ft_putnbr_base_fd(int nbr, char *base, int fd);
+
+void	ft_putnchar_fd(int n, char c, int fd);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 

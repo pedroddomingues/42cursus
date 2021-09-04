@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_number_width.c                                  :+:      :+:    :+:   */
+/*   ft_putnchar_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 21:40:50 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/06 23:06:00 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/08/28 00:40:30 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/08/28 00:44:30 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_number_width(int n, char *base)
+void	ft_putnchar_fd(int n, char c, int fd)
 {
-	int	width;
-
-	width = 1;
-	while (n > 0)
+	while (n)
 	{
-		n /= ft_strlen(base);
-		width++;
+		write(fd, &c, 1);
+		n--;
 	}
-	return (width);
 }

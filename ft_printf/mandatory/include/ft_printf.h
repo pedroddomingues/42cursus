@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 19:30:40 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/16 21:48:05 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/09/04 16:35:34 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 int			ft_printf(const char *str, ...);
 
 int			print_c(char *str, int arg);
+int			print_percent(char *str);
 int			print_s(char *str, char *arg);
 int			print_d(char *str, int arg);
 int			print_x(char *str, unsigned long int arg);

@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_number_width.c                                  :+:      :+:    :+:   */
+/*   ft_ullitoa_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 21:40:50 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/06 23:06:00 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/08/11 22:59:54 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/08/12 00:46:31 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_number_width(int n, char *base)
+char	*ft_ullitoa_base(unsigned long long int n, char *base)
 {
-	int	width;
+	unsigned long long int	nbr;
+	char					*a;
+	int						b_len;
+	int						size;
 
-	width = 1;
-	while (n > 0)
+	b_len = ft_strlen(base);
+	nbr = n;
+	size = 1;
+	n /= b_len;
+	while (n && size++)
+		n /= b_len;
+	a = (char *)malloc(size + 1);
+	if (!a)
+		return (0);
+	a[size--] = '\0';
+	while (nbr > 0)
 	{
-		n /= ft_strlen(base);
-		width++;
+		a[size--] = base[nbr % b_len];
+		nbr /= b_len;
 	}
-	return (width);
+	if (size == 0 && a[1] == '\0')
+		a[0] = '0';
+	return (a);
 }
