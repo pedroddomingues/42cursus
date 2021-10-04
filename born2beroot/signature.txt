@@ -1,0 +1,3 @@
+SHA1 hash de .\born2beroot-debian.vdi:
+aaffaf1f76eff02e2e47aa7312fe76a7a804a829
+CertUtil: -hashfile : comando concluído com Êxito.
