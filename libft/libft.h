@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/08/28 00:43:40 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/10/05 23:24:31 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,23 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdarg.h>
+# include <stdio.h>
+
+# define BUFFER_SIZE	10
+# define SPECIFIERS		"cspdiuxX%"
+
+# define HEXALOWER		"0123456789abcdef"
+# define HEXAUPPER		"0123456789ABCDEF"
+# define DECIMAL		"0123456789"
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+char	*get_next_line(int fd);
 
 void	ft_bzero(void *str, size_t n);
 
@@ -134,4 +145,12 @@ char	*ft_strnochr(const char *s, int c);
 char	*ft_strnorchr(const char *s, int c);
 
 char	*ft_strcpy(char *dst, const char *src);
+
+int		ft_printf(const char *str, ...);
+
+int		print_c(char *str, int arg);
+int		print_percent(char *str);
+int		print_s(char *str, char *arg);
+int		print_d(char *str, int arg);
+int		print_x(char *str, unsigned long int arg);
 #endif
