@@ -1,0 +1,242 @@
+==16062== Memcheck, a memory error detector
+==16062== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==16062== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==16062== Command: ./fdf
+==16062== Parent PID: 16040
+==16062== 
+==16062== Invalid read of size 1
+==16062==    at 0x10C6AC: ft_memmove (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10C1FF: ft_substr (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10B9FD: cut_line (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10BC2F: get_next_line (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10AA6F: load_map (main.c:104)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062==  Address 0x699e053 is 13 bytes before a block of size 57 alloc'd
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10C186: ft_substr (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10B9C3: cut_line (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10BC2F: get_next_line (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10AA6F: load_map (main.c:104)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== Invalid free() / delete / delete[] / realloc()
+==16062==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10AA14: init_map (main.c:92)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062==  Address 0x69ac230 is 0 bytes inside a block of size 76 free'd
+==16062==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10A9DF: init_map (main.c:87)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062==  Block was alloc'd at
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10A747: parse_line (main.c:21)
+==16062==    by 0x10A94D: init_map (main.c:80)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== Invalid read of size 4
+==16062==    at 0x10A013: draw_line (bla.c:111)
+==16062==    by 0x10B10A: print_lines (print.c:27)
+==16062==    by 0x10B1D4: draw_fdf (print.c:41)
+==16062==    by 0x10AC56: main (main.c:140)
+==16062==  Address 0x69a334c is 0 bytes after a block of size 76 alloc'd
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10A980: init_map (main.c:81)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== Invalid read of size 4
+==16062==    at 0x109FDD: draw_line (bla.c:110)
+==16062==    by 0x10B13B: print_lines (print.c:29)
+==16062==    by 0x10B1D4: draw_fdf (print.c:41)
+==16062==    by 0x10AC56: main (main.c:140)
+==16062==  Address 0x69a334c is 0 bytes after a block of size 76 alloc'd
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10A980: init_map (main.c:81)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== Invalid read of size 4
+==16062==    at 0x10A013: draw_line (bla.c:111)
+==16062==    by 0x10B13B: print_lines (print.c:29)
+==16062==    by 0x10B1D4: draw_fdf (print.c:41)
+==16062==    by 0x10AC56: main (main.c:140)
+==16062==  Address 0x69a422c is 0 bytes after a block of size 76 alloc'd
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10A980: init_map (main.c:81)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== Invalid read of size 4
+==16062==    at 0x10A013: draw_line (bla.c:111)
+==16062==    by 0x10B10A: print_lines (print.c:27)
+==16062==    by 0x10B1D4: draw_fdf (print.c:41)
+==16062==    by 0x10B233: reset_image (print.c:49)
+==16062==    by 0x10A70A: key_hook (hooks.c:53)
+==16062==    by 0x10CEB8: mlx_loop (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10AC83: main (main.c:142)
+==16062==  Address 0x69a334c is 0 bytes after a block of size 76 alloc'd
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10A980: init_map (main.c:81)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== Invalid read of size 4
+==16062==    at 0x109FDD: draw_line (bla.c:110)
+==16062==    by 0x10B13B: print_lines (print.c:29)
+==16062==    by 0x10B1D4: draw_fdf (print.c:41)
+==16062==    by 0x10B233: reset_image (print.c:49)
+==16062==    by 0x10A70A: key_hook (hooks.c:53)
+==16062==    by 0x10CEB8: mlx_loop (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10AC83: main (main.c:142)
+==16062==  Address 0x69a334c is 0 bytes after a block of size 76 alloc'd
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10A980: init_map (main.c:81)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== Invalid read of size 4
+==16062==    at 0x10A013: draw_line (bla.c:111)
+==16062==    by 0x10B13B: print_lines (print.c:29)
+==16062==    by 0x10B1D4: draw_fdf (print.c:41)
+==16062==    by 0x10B233: reset_image (print.c:49)
+==16062==    by 0x10A70A: key_hook (hooks.c:53)
+==16062==    by 0x10CEB8: mlx_loop (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10AC83: main (main.c:142)
+==16062==  Address 0x69a422c is 0 bytes after a block of size 76 alloc'd
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10A980: init_map (main.c:81)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== Invalid write of size 4
+==16062==    at 0x109C30: my_mlx_pixel_put (bla.c:31)
+==16062==    by 0x10A19D: draw_line (bla.c:133)
+==16062==    by 0x10B13B: print_lines (print.c:29)
+==16062==    by 0x10B1D4: draw_fdf (print.c:41)
+==16062==    by 0x10B233: reset_image (print.c:49)
+==16062==    by 0x10A70A: key_hook (hooks.c:53)
+==16062==    by 0x10CEB8: mlx_loop (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10AC83: main (main.c:142)
+==16062==  Address 0x6d86f78 is 4,006,216 bytes inside an unallocated block of size 4,006,320 in arena "client"
+==16062== 
+==16062== Invalid write of size 4
+==16062==    at 0x109C30: my_mlx_pixel_put (bla.c:31)
+==16062==    by 0x10A19D: draw_line (bla.c:133)
+==16062==    by 0x10B10A: print_lines (print.c:27)
+==16062==    by 0x10B1D4: draw_fdf (print.c:41)
+==16062==    by 0x10B233: reset_image (print.c:49)
+==16062==    by 0x10A70A: key_hook (hooks.c:53)
+==16062==    by 0x10CEB8: mlx_loop (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10AC83: main (main.c:142)
+==16062==  Address 0x6d86fb8 is 4,006,280 bytes inside an unallocated block of size 4,006,320 in arena "client"
+==16062== 
+==16062== 
+==16062== HEAP SUMMARY:
+==16062==     in use at exit: 4,610 bytes in 245 blocks
+==16062==   total heap usage: 1,119 allocs, 875 frees, 136,387 bytes allocated
+==16062== 
+==16062== 57 bytes in 1 blocks are definitely lost in loss record 1 of 9
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10C186: ft_substr (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10B9C3: cut_line (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10BC2F: get_next_line (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10AA6F: load_map (main.c:104)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== 57 bytes in 1 blocks are definitely lost in loss record 2 of 9
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10C186: ft_substr (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10B9C3: cut_line (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10BC2F: get_next_line (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10A7B9: get_linesnum (main.c:36)
+==16062==    by 0x10AABB: load_map (main.c:112)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== 136 bytes in 1 blocks are indirectly lost in loss record 3 of 9
+==16062==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x4E448C0: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==16062==    by 0x10D18A: mlx_int_new_xshm_image (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10D456: mlx_new_image (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10B18A: draw_fdf (print.c:38)
+==16062==    by 0x10B233: reset_image (print.c:49)
+==16062==    by 0x10A70A: key_hook (hooks.c:53)
+==16062==    by 0x10CEB8: mlx_loop (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10AC83: main (main.c:142)
+==16062== 
+==16062== 224 (88 direct, 136 indirect) bytes in 1 blocks are definitely lost in loss record 4 of 9
+==16062==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10D157: mlx_int_new_xshm_image (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10D456: mlx_new_image (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10B18A: draw_fdf (print.c:38)
+==16062==    by 0x10B233: reset_image (print.c:49)
+==16062==    by 0x10A70A: key_hook (hooks.c:53)
+==16062==    by 0x10CEB8: mlx_loop (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10AC83: main (main.c:142)
+==16062== 
+==16062== 479 bytes in 209 blocks are indirectly lost in loss record 5 of 9
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10B6F4: worddup (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10B856: ft_split (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10A732: parse_line (main.c:20)
+==16062==    by 0x10A94D: init_map (main.c:80)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== 513 bytes in 9 blocks are definitely lost in loss record 6 of 9
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10C186: ft_substr (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10B9C3: cut_line (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10BC2F: get_next_line (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10A7D3: get_linesnum (main.c:38)
+==16062==    by 0x10AABB: load_map (main.c:112)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== 836 bytes in 11 blocks are indirectly lost in loss record 7 of 9
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10A980: init_map (main.c:81)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== 1,520 (684 direct, 836 indirect) bytes in 1 blocks are definitely lost in loss record 8 of 9
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10AAF1: load_map (main.c:114)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== 2,239 (1,760 direct, 479 indirect) bytes in 11 blocks are definitely lost in loss record 9 of 9
+==16062==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16062==    by 0x10B7F0: ft_split (in /home/user42/42/fdf2/fdf)
+==16062==    by 0x10A732: parse_line (main.c:20)
+==16062==    by 0x10A94D: init_map (main.c:80)
+==16062==    by 0x10AB35: load_map (main.c:116)
+==16062==    by 0x10AC13: init (main.c:131)
+==16062==    by 0x10AC4A: main (main.c:139)
+==16062== 
+==16062== LEAK SUMMARY:
+==16062==    definitely lost: 3,159 bytes in 24 blocks
+==16062==    indirectly lost: 1,451 bytes in 221 blocks
+==16062==      possibly lost: 0 bytes in 0 blocks
+==16062==    still reachable: 0 bytes in 0 blocks
+==16062==         suppressed: 0 bytes in 0 blocks
+==16062== 
+==16062== For counts of detected and suppressed errors, rerun with: -v
+==16062== ERROR SUMMARY: 2415 errors from 16 contexts (suppressed: 1 from 1)
