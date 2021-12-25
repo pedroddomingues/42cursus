@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/10/05 23:24:31 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/11/02 09:45:37 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ char	*ft_strctrim(char const *s1, char c);
 int		ft_number_width(int n, char *base);
 
 char	**ft_split(char const *s, char c);
+
+size_t	get_wordsnum(const char *s, char c);
 
 char	*ft_itoa(int n);
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:37:57 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/10/05 23:10:33 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/11/02 09:30:43 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*cut_line(char **buff, size_t *nlchar_position)
 	tmp = ft_strdup(*buff);
 	if (search_line_break(&*buff, &*nlchar_position))
 	{
-		line = ft_substr(*buff, 0, *nlchar_position + 1);
+		line = ft_substr(*buff, 0, *nlchar_position);
 		free(*buff);
 		*buff = ft_substr(tmp, *nlchar_position + 1, ft_strlen(tmp));
 	}
