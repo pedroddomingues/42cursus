@@ -18,5 +18,9 @@
 # define KEY_M 109
 # define KEY_PLUS 65451
 # define KEY_MINUS 65453
+# define KEY_J 106
+# define KEY_K 107
+# define KEY_C 99
+# define KEY_H 104
 
 #endif

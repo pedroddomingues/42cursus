@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/16 13:04:27 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/01/16 19:15:26 by pehenriq         ###   ########.fr       */
+/*   Created: 2022/01/01 16:43:31 by pehenriq          #+#    #+#             */
+/*   Updated: 2022/01/23 10:21:11 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-int	create_trgb(int t, int r, int g, int b)
+t_fdf_params	*check_initial_errors(t_fdf_params *fdf, int argc, char **argv)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int	get_t(int trgb)
-{
-	return (trgb & (0xFF << 24));
-}
-
-int	get_r(int trgb)
-{
-	return (trgb & (0xFF << 16));
-}
-
-int	get_g(int trgb)
-{
-	return (trgb & (0xFF << 8));
-}
-
-int	get_b(int trgb)
-{
-	return (trgb & 0xFF);
+	if (argc == 1)
+	{
+		fdf->map.map_name = ft_strdup("42");
+		ft_printf("Using default map - 42.fdf\n");
+		ft_printf("ALL MAPS SHOULD BE INSIDE 'maps' FOLDER\n");
+		ft_printf("Usage: ./fdf [filename]\n");
+	}
+	else
+		fdf->map.map_name = ft_strdup(argv[1]);
+	if (!fdf->map.map_name)
+		error(3, 0, "Error while allocating memory for file name.");
+	return (fdf);
 }

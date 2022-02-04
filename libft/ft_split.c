@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 15:05:35 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/11/07 14:46:11 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/10/10 15:35:47 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	get_wordsnum(const char *s, char c)
 	return (words);
 }
 
-static size_t	get_wordlen(const char *s, char c)
+size_t	get_wordlen(const char *s, char c)
 {
 	size_t	offset;
 
@@ -43,7 +43,7 @@ static size_t	get_wordlen(const char *s, char c)
 	return (offset);
 }
 
-static char	*worddup(const char *s, size_t len)
+char	*worddup(const char *s, size_t len)
 {
 	char	*str;
 	size_t	offset;
@@ -67,10 +67,7 @@ static void	*kill(char **res, size_t stop)
 
 	counter = 0;
 	while (counter < stop)
-	{	
 		free(res[counter]);
-		counter++;
-	}
 	free(res);
 	return (NULL);
 }

@@ -5,50 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 23:22:09 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/10/30 23:42:00 by pehenriq         ###   ########.fr       */
+/*   Created: 2022/01/01 16:44:54 by pehenriq          #+#    #+#             */
+/*   Updated: 2022/01/23 14:02:19 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-t_fdf_params	*check_initial_errors(t_fdf_params *fdf, int argc, char **argv)
+static void	free_map(t_fdf_params *fdf)
 {
-	fdf = malloc(sizeof(t_fdf_params));
-	if (!fdf)
+	int	i;
+
+	i = 0;
+	while (i <= fdf->map.x_max)
 	{
-		free(fdf);
-		error(3, 0, "Error while creating fdf");
+		free(fdf->map.points[i]);
+		free(fdf->map.colors[i]);
+		i++;
 	}
-	if (argc == 1)
-	{
-		fdf->map.map_name = ft_strdup("42");
-		ft_printf("Using default map - 42.fdf\n");
-		ft_printf("ALL MAPS SHOULD BE INSIDE 'maps' FOLDER\n");
-		ft_printf("Usage: ./fdf [filename]\n");
-	}
-	else
-		fdf->map.map_name = ft_strdup(argv[1]);
-	return (fdf);
+	free(fdf->map.points);
+	free(fdf->map.colors);
 }
 
 void	exit_program(t_fdf_params *fdf, int code)
 {
 	if (code == 0)
-		ft_printf("Exiting program.");
+		ft_printf("Exiting program.\n");
+	else if (code == -1)
+		ft_printf("Error. Exiting program.\n");
 	else if (code == 1)
 		ft_printf("Error reading file: %s\n"
 			"Make sure it exists in the maps folder.\n", fdf->map.path);
 	else if (code == 2)
 		ft_printf("Error reading file\n"
 			"This file is not an fdf file.\n");
-	if (code =! 1)
-		mlx_destroy_image(fdf->mlx, fdf->img.ptr);
+	free(fdf->angles);
+	free(fdf->map.map_name);
+	free_map(fdf);
+	mlx_destroy_image(fdf->mlx, fdf->img.ptr);
+	mlx_clear_window(fdf->mlx, fdf->win);
 	mlx_destroy_window(fdf->mlx, fdf->win);
 	mlx_destroy_display(fdf->mlx);
-	free(fdf->angles);
-	free(fdf->map.path);
-	free(fdf->map.map_name);
+	mlx_loop_end(fdf->mlx);
 	free(fdf->mlx);
 	free(fdf);
 	exit(code);

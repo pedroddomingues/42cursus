@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 23:23:21 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/06/06 13:56:11 by pehenriq         ###   ########.fr       */
+/*   Updated: 2021/10/31 12:42:48 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ size_t	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (*(str + i) != 0)
-	{
 		i++;
-	}
 	return (i);
 }

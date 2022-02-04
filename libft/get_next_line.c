@@ -6,94 +6,101 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:37:57 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/11/02 09:30:43 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/01/16 12:51:13 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	search_line_break(char **buff, size_t *nlchar_position)
+static int	has_line(char *buffer)
 {
 	int	i;
 
-	i = 0;
-	if (!*buff)
-		return (0);
-	while ((*buff)[i] != '\0')
+	if (buffer)
 	{
-		if ((*buff)[i] == '\n')
-		{
-			*nlchar_position = i;
-			return (1);
-		}
-		i++;
+		i = 0;
+		while (buffer[i] != '\n' && buffer[i])
+			i++;
+		if (buffer[i] == '\n')
+			return (i);
 	}
-	return (0);
+	return (-1);
 }
 
-static char	*cut_line(char **buff, size_t *nlchar_position)
+static int	get_buffer(int fd, char **static_buffer)
 {
-	int		i;
+	char	*buffer;
 	char	*tmp;
-	char	*line;
+	int		ret;
 
-	i = 0;
-	line = NULL;
-	if (!*buff)
-		return (NULL);
-	tmp = ft_strdup(*buff);
-	if (search_line_break(&*buff, &*nlchar_position))
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char *));
+	if (!buffer)
+		return (-1);
+	ret = read(fd, buffer, BUFFER_SIZE);
+	while (ret > 0)
 	{
-		line = ft_substr(*buff, 0, *nlchar_position);
-		free(*buff);
-		*buff = ft_substr(tmp, *nlchar_position + 1, ft_strlen(tmp));
+		buffer[ret] = '\0';
+		if (!*static_buffer)
+			*static_buffer = ft_strdup(buffer);
+		else
+		{
+			tmp = *static_buffer;
+			*static_buffer = ft_strjoin(tmp, buffer);
+			free(tmp);
+		}
+		if (has_line(*static_buffer) >= 0)
+			break ;
+		ret = read(fd, buffer, BUFFER_SIZE);
 	}
-	else
-	{
-		i = ft_strlen(tmp);
-		if (i > 0)
-			line = ft_substr(tmp, 0, i);
-		free(*buff);
-		*buff = NULL;
-	}
-	free(tmp);
-	return (line);
+	free(buffer);
+	return (ret);
 }
 
-static void	set_buff(char **buff, char **tmp, char **result)
+static void	get_line(char **buffer, char **line)
 {
-	if (!*buff)
-		*buff = ft_strdup(*result);
-	else
+	char	*tmp;
+	int		i;
+
+	if (*buffer)
 	{
-		*tmp = ft_strdup(*buff);
-		free(*buff);
-		*buff = ft_strjoin(*tmp, *result);
-		free(*tmp);
+		i = has_line(*buffer);
+		if (i >= 0)
+		{
+			tmp = *buffer;
+			*line = ft_substr(tmp, 0, i + 1);
+			*buffer = ft_substr(tmp, i + 1, ft_strlen(tmp));
+			free(tmp);
+			if (ft_strlen(*buffer) == 0)
+			{
+				free(*buffer);
+				*buffer = NULL;
+			}
+		}
+		else
+		{
+			*line = ft_strdup(*buffer);
+			free(*buffer);
+			*buffer = NULL;
+		}
 	}
 }
 
 char	*get_next_line(int fd)
 {
-	size_t		nlchar_position;
-	size_t		bytes_read;
-	static char	*buff[256];
-	char		*result;
-	char		*tmp;
+	static char	*buffer[1024];
+	char		*line;
+	int			ret;
 
-	if (fd < 0 || read(fd, NULL, 0) != 0 || BUFFER_SIZE < 0)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	result = malloc(BUFFER_SIZE + 1);
-	bytes_read = read(fd, result, BUFFER_SIZE);
-	nlchar_position = 0;
-	while (bytes_read > 0)
+	ret = get_buffer(fd, &buffer[fd]);
+	line = NULL;
+	if (ret == -1)
 	{
-		(result)[bytes_read] = '\0';
-		set_buff(&buff[fd], &tmp, &result);
-		if (search_line_break(&buff[fd], &nlchar_position))
-			break ;
-		bytes_read = read(fd, result, BUFFER_SIZE);
+		if (buffer[fd])
+			free(buffer[fd]);
 	}
-	free(result);
-	return (cut_line(&buff[fd], &nlchar_position));
+	else
+		get_line(&buffer[fd], &line);
+	return (line);
 }

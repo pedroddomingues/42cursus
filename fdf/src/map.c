@@ -5,103 +5,132 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 14:47:26 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/11/07 14:49:21 by pehenriq         ###   ########.fr       */
+/*   Created: 2022/01/10 23:01:12 by pehenriq          #+#    #+#             */
+/*   Updated: 2022/01/23 14:24:01 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-static void	free_split(char **split)
+static void	get_map_size(t_fdf_params *fdf, int fd)
 {
-	int		i;
-
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-}
-
-static int	*parse_line(char *line, int line_width)
-{
-	int		*net_line;
-	char	**tmp;
-
-	tmp = ft_split(line, ' ');
-	net_line = malloc(sizeof(int) * line_width);
-	line_width--;
-	while (line_width >= 0)
-	{
-		net_line[line_width] = ft_atoi(tmp[line_width]);
-		line_width--;
-	}
-	free_split(tmp);
-	return (net_line);
-}
-
-static void	populate_map(t_fdf_params *fdf, int fd)
-{
+	char	**split;
 	char	*line;
-	int		*map_line;
-	int		i;
-	int		j;
+	int		y;
 
-	i = 0;
+	y = 0;
 	line = get_next_line(fd);
+	split = ft_split(line, ' ');
+	if (split[0] == NULL)
+		error(2, 0, "Error while reading file.");
+	while (split[y])
+		y++;
+	fdf->map.y_max = y - 1;
+	ft_free_split(split);
 	while (line)
 	{
-		j = 0;
-		map_line = parse_line(line, fdf->map.width);
-		fdf->map.data[i] = malloc(sizeof(int) * fdf->map.width);
-		while (j < fdf->map.width)
-		{
-			fdf->map.data[i][j] = map_line[j];
-			j++;
-		}
-		free(map_line);
 		free(line);
 		line = get_next_line(fd);
-		i++;
+		fdf->map.x_max++;
 	}
 	free(line);
 }
 
-static int	get_linesnum(int fd, char *line)
+static void	map_malloc(t_fdf_params *fdf, int fd)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	while (line)
+	get_map_size(fdf, fd);
+	fdf->map.points = (int **)malloc(sizeof(int *) * (fdf->map.x_max + 1));
+	if (!fdf->map.points)
+		error(1, 0, "Error while allocating memory.");
+	fdf->map.colors = (int **)malloc(sizeof(int *) * (fdf->map.x_max + 1));
+	if (!fdf->map.colors)
+		error(1, 0, "Error while allocating memory.");
+	while (i <= fdf->map.x_max)
 	{
-		free(line);
-		line = get_next_line(fd);
+		fdf->map.points[i] = (int *)malloc(sizeof(int) * (fdf->map.y_max + 1));
+		if (!fdf->map.points[i])
+			error(1, 0, "Error while allocating memory.");
+		fdf->map.colors[i] = (int *)malloc(sizeof(int) * (fdf->map.y_max + 1));
+		if (!fdf->map.colors[i])
+			error(1, 0, "Error while allocating memory.");
 		i++;
 	}
-	free(line);
-	return (i);
+}
+
+static void	parse_line(t_fdf_params *fdf, char *line)
+{
+	char	**line_split;
+	char	**color_split;
+	int		y;
+	int		z;
+
+	y = 0;
+	line_split = ft_split(line, ' ');
+	while (line_split[y])
+	{
+		if (ft_strchr(line_split[y], ','))
+		{
+			color_split = ft_split(line_split[y], ',');
+			fdf->map.colors[fdf->map.x][y] = ft_hexstrtoi(color_split[1]);
+			ft_free_split(color_split);
+		}
+		z = ft_atoi(line_split[y]);
+		fdf->map.points[fdf->map.x][y] = z;
+		if (z > fdf->map.z_max)
+			fdf->map.z_max = z;
+		if (z < fdf->map.z_min)
+			fdf->map.z_min = z;
+		y++;
+	}
+	fdf->map.x++;
+	ft_free_split(line_split);
+}
+
+static char	*get_path(t_fdf_params *fdf)
+{
+	char	*path_prefix;
+	char	*path;
+	char	*tmp;
+
+	tmp = malloc(sizeof(char) * (ft_strlen(fdf->map.map_name) + 8));
+	if (!tmp)
+		error(3, 0, "Error while allocating memory for file name.");
+	path_prefix = ft_strjoin("./maps/", fdf->map.map_name);
+	if (!path_prefix)
+		error(3, 0, "Error while allocating memory for file name.");
+	ft_strlcpy(tmp, path_prefix, ft_strlen(path_prefix) + 1);
+	free(path_prefix);
+	path = ft_strjoin(tmp, ".fdf");
+	if (!path)
+		error(3, 0, "Error while allocating memory for file name.");
+	free(tmp);
+	return (path);
 }
 
 void	load_map(t_fdf_params *fdf)
 {
 	char	*line;
+	char	*path;
+	int		*map_line;
 	int		fd;
 
-	fd = open(fdf->map.path, O_RDONLY, 0);
+	path = get_path(fdf);
+	fd = open(path, O_RDONLY, 0);
 	if (fd == -1)
-		error(fdf, 2);
-	line = get_next_line(fd);
-	if (!line)
-	{
-		free(line);
-		exit_program(fdf, 3);
-	}
-	fdf->map.width = get_wordsnum(line, ' ');
-	fdf->map.height = get_linesnum(fd, line);
+		exit_program(fdf, 1);
+	map_malloc(fdf, fd);
 	close(fd);
-	fdf->map.data = malloc(sizeof(int *) * fdf->map.height);
-	fd = open(fdf->map.path, O_RDONLY, 0);
-	populate_map(fdf, fd);
+	fd = open(path, O_RDONLY, 0);
+	line = get_next_line(fd);
+	while (line)
+	{
+		parse_line(fdf, line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	free(path);
+	free(line);
 }

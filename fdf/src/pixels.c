@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   pixels.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 16:53:26 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/01/11 21:18:38 by pehenriq         ###   ########.fr       */
+/*   Created: 2022/01/24 17:10:20 by pehenriq          #+#    #+#             */
+/*   Updated: 2022/01/24 17:10:32 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/fdf.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	char	*sub;
-	size_t	size;
+	char	*dst;
 
-	if (!s)
-		return (NULL);
-	size = ft_strlen(s);
-	if (start > size)
-	{
-		len = 1;
-		start = 0;
-	}
-	else if (start + len > size)
-		len = size - start + 1;
-	else
-		len = len + 1;
-	sub = malloc(len);
-	if (!sub)
-		return (NULL);
-	ft_strlcpy(sub, s + start, len);
-	return (sub);
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int *) dst = color;
 }

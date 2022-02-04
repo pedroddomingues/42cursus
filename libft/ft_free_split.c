@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 16:53:26 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/01/11 21:18:38 by pehenriq         ###   ########.fr       */
+/*   Created: 2022/01/16 12:21:19 by pehenriq          #+#    #+#             */
+/*   Updated: 2022/01/16 12:21:33 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+void	ft_free_split(char **split)
 {
-	char	*sub;
-	size_t	size;
+	int		i;
 
-	if (!s)
-		return (NULL);
-	size = ft_strlen(s);
-	if (start > size)
+	i = 0;
+	while (split[i])
 	{
-		len = 1;
-		start = 0;
+		free(split[i]);
+		i++;
 	}
-	else if (start + len > size)
-		len = size - start + 1;
-	else
-		len = len + 1;
-	sub = malloc(len);
-	if (!sub)
-		return (NULL);
-	ft_strlcpy(sub, s + start, len);
-	return (sub);
+	free(split);
 }

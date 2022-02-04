@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strchr_i.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 16:53:26 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/01/11 21:18:38 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/10/31 12:34:19 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/10/31 12:35:15 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+int	ft_strchr_i(const char *s, int c)
 {
-	char	*sub;
-	size_t	size;
+	unsigned char	c_unsigned;
+	int				i;
 
+	i = 0;
 	if (!s)
-		return (NULL);
-	size = ft_strlen(s);
-	if (start > size)
+		return (-1);
+	c_unsigned = (unsigned char)c;
+	while (s[i] != '\0')
 	{
-		len = 1;
-		start = 0;
+		if (s[i] == c_unsigned)
+			return (i);
+		i++;
 	}
-	else if (start + len > size)
-		len = size - start + 1;
-	else
-		len = len + 1;
-	sub = malloc(len);
-	if (!sub)
-		return (NULL);
-	ft_strlcpy(sub, s + start, len);
-	return (sub);
+	if (c_unsigned == '\0')
+		return (i);
+	return (-1);
 }

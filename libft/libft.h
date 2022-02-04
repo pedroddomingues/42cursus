@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2021/11/02 09:45:37 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/01/23 15:38:34 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-# define BUFFER_SIZE	10
+# define BUFFER_SIZE	32
 # define SPECIFIERS		"cspdiuxX%"
 
 # define HEXALOWER		"0123456789abcdef"
@@ -94,8 +94,6 @@ int		ft_number_width(int n, char *base);
 
 char	**ft_split(char const *s, char c);
 
-size_t	get_wordsnum(const char *s, char c);
-
 char	*ft_itoa(int n);
 
 char	*ft_itoa_base(int n, char *base);
@@ -148,6 +146,10 @@ char	*ft_strnorchr(const char *s, int c);
 
 char	*ft_strcpy(char *dst, const char *src);
 
+size_t	get_wordsnum(const char *s, char c);
+
+size_t	get_wordlen(const char *s, char c);
+
 int		ft_printf(const char *str, ...);
 
 int		print_c(char *str, int arg);
@@ -155,4 +157,12 @@ int		print_percent(char *str);
 int		print_s(char *str, char *arg);
 int		print_d(char *str, int arg);
 int		print_x(char *str, unsigned long int arg);
+int		ft_strchr_i(const char *s, int c);
+
+int		ft_hexstrtoi(char *hex);
+
+void	ft_free_split(char **split);
+
+char	*ft_ftoa(float number);
+
 #endif
