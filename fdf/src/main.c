@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 18:39:21 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/01/24 17:23:31 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:29:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	close_window (t_fdf_params *fdf)
 {
 	exit_program(fdf, 0);
+	return (0);
 }
 
 static void	new_window(t_fdf_params *fdf, char *name)
@@ -42,7 +43,7 @@ static void	init(t_fdf_params *fdf)
 	fdf->map.z_max = 0;
 	fdf->map.z_min = 0;
 	fdf->map.x = 0;
-	fdf->status = LOADING;
+	fdf->instructions = 0;
 	fdf->color_mode = 0;
 	fdf->color_one = create_trgb(255, 255, 255, 255);
 	fdf->color_two = create_trgb(255, 255, 255, 0);

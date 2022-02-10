@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 16:53:01 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/01/24 17:02:57 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:28:48 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ int	key_hook(int key, t_fdf_params *fdf)
 	else if (key == KEY_H)
 		toggle_instructions(fdf);
 	reset_image(fdf);
+	return (0);
 }

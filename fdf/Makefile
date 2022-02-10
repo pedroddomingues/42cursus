@@ -1,4 +1,4 @@
-CFLAGS = -g
+CFLAGS = -g -Wall -Wextra -Werror
 CC = gcc
 FILES = src/*.c ../libft/libft.a
 LIBS = -lmlx -lXext -lX11 -lm

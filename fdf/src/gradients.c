@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gradients.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 19:14:15 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/01/23 14:37:56 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:30:30 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int	get_color(t_fdf_params *fdf, int z)
 	}
 	else if (fdf->color_mode == GRADIENT)
 		return (gradient(fdf, z));
-	else if (fdf->color_mode == RAINBOW)
+	else
 		return (rainbow());
 }

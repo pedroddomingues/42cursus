@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:59:26 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/01/24 17:43:31 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/02/10 14:57:32 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void	draw_line(t_fdf_params *fdf, t_point point1, t_point point2)
 	y = point1.y;
 	while ((int)(x - point2.x) || (int)(y - point2.y))
 	{
-		if (point1.x <= WIN_SIZE_X && point2.y <= WIN_SIZE_Y
-			&& point1.x >= 0 && point1.y >= 0)
+		if (x <= WIN_SIZE_X && y <= WIN_SIZE_Y
+			&& x >= 0 && y >= 0)
 			my_mlx_pixel_put(&(fdf->img), (int)x, (int)y,
 				get_color(fdf, point1.z));
 		x += x_step;

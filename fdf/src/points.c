@@ -21,7 +21,7 @@ static void	zoom(t_fdf_params *fdf, float *x, float *y)
 static void	projection(t_fdf_params *fdf, float *x, float *y, int z)
 {
 	*x = (*x - *y) * cos(fdf->angles->alpha);
-	*y = (*x + *y) * sin(fdf->angles->beta) - z;
+	*y = (*x + *y) * sin(fdf->angles->beta) - (float) z;
 }
 
 static void	translate(t_fdf_params *fdf, float *x, float *y)

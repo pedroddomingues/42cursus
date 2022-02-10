@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 23:01:12 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/01/23 14:24:01 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:29:44 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void	load_map(t_fdf_params *fdf)
 {
 	char	*line;
 	char	*path;
-	int		*map_line;
 	int		fd;
 
 	path = get_path(fdf);
