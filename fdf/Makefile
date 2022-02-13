@@ -19,6 +19,8 @@ NAME = fdf
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt
 
+NORM = norminette.txt
+
 vpath %.c $(SRC_DIR)
 vpath %.h $(INCD_DIR)
 
@@ -26,10 +28,11 @@ all:	$(NAME)
 
 $(NAME):	libft $(OBJ)
 	@echo "Compiling fdf..."
-	$(CC) $(CFLAGS) $(MAIN) $(OBJ) $(LIBS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(MAIN) $(OBJ) $(LIBS) -o $(NAME)
 	@echo "Done."
 
 $(OBJ_DIR)/%.o:	%.c
+	@mkdir -p $(OBJ_DIR)
 	@echo "Compiling $(basename $<)..."
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Done."
@@ -44,11 +47,24 @@ valgrind: all
 
 libft:
 	@echo "Compiling libft..."
-	make -R ../libft
+	@make -R ../libft
 	@echo "libft compiled successfully"
 
-norminette:
-	@norminette | grep 'Error'
+norminette: norminette_run norminette_return
+
+norminette_run:
+	@echo "Running norminette..."
+	@touch $(NORM)
+	@norminette | { grep 'Error' || true; } > $(NORM)
+
+norminette_return:
+	@if [ -s $(NORM) ]; then \
+	echo "Norminette failed" &&\
+	cat $(NORM);\
+	else \
+	echo "Norminette passed";\
+	fi
+	@rm -f $(NORM)
 
 clean:
 	@$(RM) $(OBJ_DIR)

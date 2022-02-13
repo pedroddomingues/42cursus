@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 16:53:01 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/08 19:28:48 by coder            ###   ########.fr       */
+/*   Updated: 2022/02/13 20:45:15 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,6 @@ int	key_hook(int key, t_fdf_params *fdf)
 		fdf->zoom += 10;
 	else if (key == KEY_MINUS)
 		fdf->zoom -= 10;
-	else if (key == KEY_J)
-		fdf->z_multiplier += 0.05;
-	else if (key == KEY_K)
-		fdf->z_multiplier -= 0.05;
 	else if (key == KEY_C)
 		change_color_mode(fdf);
 	else if (key == KEY_H)

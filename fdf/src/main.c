@@ -12,7 +12,7 @@
 
 #include "../include/fdf.h"
 
-static int	close_window (t_fdf_params *fdf)
+static int	close_window(t_fdf_params *fdf)
 {
 	exit_program(fdf, 0);
 	return (0);
