@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 16:43:31 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/13 21:35:18 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/06/06 11:32:46 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/09 00:22:11 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "libft.h"
 
-t_fdf_params	*check_initial_errors(t_fdf_params *fdf, int argc, char **argv)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (argc != 2)
+	if (!dst && !src)
+		return (dst);
+	if (dst > src)
 	{
-		ft_printf("WE ENCOURAGE ALL MAPS SHOULD BE INSIDE 'maps' FOLDER\n");
-		ft_printf("Usage: ./fdf [file]\n");
-		exit_program(fdf, 1);
+		while (len--)
+		{
+			*(unsigned char *)(dst + len) = *(unsigned char *)(src + len);
+		}
 	}
 	else
-		fdf->map.path = ft_strdup(argv[1]);
-	if (!fdf->map.path)
-		error(3, 0, "Error while allocating memory for file name.");
-	return (fdf);
+		ft_memcpy(dst, src, len);
+	return (dst);
 }

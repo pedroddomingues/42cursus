@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 16:43:31 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/13 21:35:18 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/05/31 23:24:19 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/06 12:42:31 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "libft.h"
 
-t_fdf_params	*check_initial_errors(t_fdf_params *fdf, int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (argc != 2)
+	size_t	c;
+	size_t	diff;
+
+	c = 0;
+	diff = 0;
+	while ((c < n) && !diff && (s1[c] != '\0') && (s2[c] != '\0'))
 	{
-		ft_printf("WE ENCOURAGE ALL MAPS SHOULD BE INSIDE 'maps' FOLDER\n");
-		ft_printf("Usage: ./fdf [file]\n");
-		exit_program(fdf, 1);
+		diff = (unsigned char)s1[c] - (unsigned char)s2[c];
+		c++;
 	}
-	else
-		fdf->map.path = ft_strdup(argv[1]);
-	if (!fdf->map.path)
-		error(3, 0, "Error while allocating memory for file name.");
-	return (fdf);
+	if (c < n && !diff && (s1[c] == '\0' || s2[c] == '\0'))
+		diff = (unsigned char)s1[c] - (unsigned char)s2[c];
+	return (diff);
 }

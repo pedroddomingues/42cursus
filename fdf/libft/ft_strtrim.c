@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 16:43:31 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/13 21:35:18 by pehenriq         ###   ########.fr       */
+/*   Created: 2021/06/09 17:45:37 by pehenriq          #+#    #+#             */
+/*   Updated: 2021/06/13 11:06:29 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "libft.h"
 
-t_fdf_params	*check_initial_errors(t_fdf_params *fdf, int argc, char **argv)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	if (argc != 2)
-	{
-		ft_printf("WE ENCOURAGE ALL MAPS SHOULD BE INSIDE 'maps' FOLDER\n");
-		ft_printf("Usage: ./fdf [file]\n");
-		exit_program(fdf, 1);
-	}
-	else
-		fdf->map.path = ft_strdup(argv[1]);
-	if (!fdf->map.path)
-		error(3, 0, "Error while allocating memory for file name.");
-	return (fdf);
+	size_t	size;
+
+	if (!s1 || !set)
+		return (0);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	size = ft_strlen(s1);
+	while (size && ft_strchr(set, s1[size]))
+		size--;
+	return (ft_substr(s1, 0, size + 1));
 }

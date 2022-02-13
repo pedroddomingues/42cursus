@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 16:44:54 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/01/23 14:02:19 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/02/13 21:39:14 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,16 @@ void	exit_program(t_fdf_params *fdf, int code)
 	else if (code == -1)
 		ft_printf("Error. Exiting program.\n");
 	else if (code == 1)
-		ft_printf("Error reading file: %s\n"
-			"Make sure it exists in the maps folder.\n", fdf->map.path);
+	{
+		ft_printf("Error reading file\n");
+		free(fdf);
+		exit(code);
+	}
 	else if (code == 2)
 		ft_printf("Error reading file\n"
 			"This file is not an fdf file.\n");
 	free(fdf->angles);
-	free(fdf->map.map_name);
+	free(fdf->map.path);
 	free_map(fdf);
 	mlx_destroy_image(fdf->mlx, fdf->img.ptr);
 	mlx_clear_window(fdf->mlx, fdf->win);

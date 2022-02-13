@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 23:01:12 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/08 19:29:44 by coder            ###   ########.fr       */
+/*   Updated: 2022/02/13 21:31:11 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,40 +89,17 @@ static void	parse_line(t_fdf_params *fdf, char *line)
 	ft_free_split(line_split);
 }
 
-static char	*get_path(t_fdf_params *fdf)
-{
-	char	*path_prefix;
-	char	*path;
-	char	*tmp;
-
-	tmp = malloc(sizeof(char) * (ft_strlen(fdf->map.map_name) + 8));
-	if (!tmp)
-		error(3, 0, "Error while allocating memory for file name.");
-	path_prefix = ft_strjoin("./maps/", fdf->map.map_name);
-	if (!path_prefix)
-		error(3, 0, "Error while allocating memory for file name.");
-	ft_strlcpy(tmp, path_prefix, ft_strlen(path_prefix) + 1);
-	free(path_prefix);
-	path = ft_strjoin(tmp, ".fdf");
-	if (!path)
-		error(3, 0, "Error while allocating memory for file name.");
-	free(tmp);
-	return (path);
-}
-
 void	load_map(t_fdf_params *fdf)
 {
 	char	*line;
-	char	*path;
 	int		fd;
 
-	path = get_path(fdf);
-	fd = open(path, O_RDONLY, 0);
+	fd = open(fdf->map.path, O_RDONLY, 0);
 	if (fd == -1)
 		exit_program(fdf, 1);
 	map_malloc(fdf, fd);
 	close(fd);
-	fd = open(path, O_RDONLY, 0);
+	fd = open(fdf->map.path, O_RDONLY, 0);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -130,6 +107,5 @@ void	load_map(t_fdf_params *fdf)
 		free(line);
 		line = get_next_line(fd);
 	}
-	free(path);
 	free(line);
 }

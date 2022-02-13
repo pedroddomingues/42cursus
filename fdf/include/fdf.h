@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 23:36:46 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/13 20:53:17 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/02/13 21:09:32 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <error.h>
 
 # include "keys.h"
-# include "../../libft/libft.h"
+# include "../libft/libft.h"
 
 # define WIN_SIZE_X 1920
 # define WIN_SIZE_Y 1080

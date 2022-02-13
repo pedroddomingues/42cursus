@@ -13,7 +13,8 @@ INCLUDE = fdf.h keys.h
 
 MAIN = src/main.c
 
-LIBS = ./libft/libft.a -lmlx -lXext -lX11 -lm
+LIBFT = ./libft/libft.a
+LIBS = -lmlx -lXext -lX11 -lm
 
 NAME = fdf
 
@@ -26,9 +27,9 @@ vpath %.h $(INCD_DIR)
 
 all:	$(NAME)
 
-$(NAME):	libft $(OBJ)
+$(NAME):	$(LIBFT) $(OBJ)
 	@echo "Compiling fdf..."
-	@$(CC) $(CFLAGS) $(MAIN) $(OBJ) $(LIBS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(MAIN) $(OBJ) $(LIBFT) $(LIBS) -o $(NAME)
 	@echo "Done."
 
 $(OBJ_DIR)/%.o:	%.c
@@ -45,9 +46,9 @@ valgrind: all
 	@echo "Running fdf with Valgrind"
 	@$(VALGRIND) ./$(NAME) $(MAP)
 
-libft:
+$(LIBFT):
 	@echo "Compiling libft..."
-	@make -R ../libft
+	@make -C ./libft
 	@echo "libft compiled successfully"
 
 norminette: norminette_run norminette_return
@@ -69,7 +70,7 @@ norminette_return:
 clean:
 	@$(RM) $(OBJ_DIR)
 
-fclean:		clean
+fclean:	clean
 	@$(RM) $(NAME)
 
 re:	fclean all
