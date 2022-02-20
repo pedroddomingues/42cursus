@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 23:01:12 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/18 02:49:03 by coder            ###   ########.fr       */
+/*   Updated: 2022/02/19 02:47:40 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static void	get_map_size(t_fdf_params *fdf, int fd)
 	y = 0;
 	line = get_next_line(fd);
 	split = ft_split(line, ' ');
-	if (split[0] == NULL)
-		error(2, 0, "Error while reading file.");
 	while (split[y])
 		y++;
 	fdf->map.y_max = y - 1;
@@ -43,13 +41,9 @@ static void	map_malloc(t_fdf_params *fdf, int fd)
 	i = 0;
 	get_map_size(fdf, fd);
 	fdf->map.points = (int **)malloc(sizeof(int *) * (fdf->map.x_max + 1));
-	if (!fdf->map.points)
-		error(1, 0, "Error while allocating memory.");
 	while (i <= fdf->map.x_max)
 	{
 		fdf->map.points[i] = (int *)malloc(sizeof(int) * (fdf->map.y_max + 1));
-		if (!fdf->map.points[i])
-			error(1, 0, "Error while allocating memory.");
 		i++;
 	}
 }

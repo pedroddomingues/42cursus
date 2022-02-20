@@ -6,7 +6,7 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 16:53:01 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/13 20:45:15 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/02/19 02:45:52 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@ static void	reset_image(t_fdf_params *fdf)
 {
 	mlx_destroy_image(fdf->mlx, fdf->img.ptr);
 	print_fdf(fdf);
-}
-
-static void	rotate(t_fdf_params *fdf, int key)
-{
-	if (key == KEY_Q || key == KEY_V)
-		fdf->angles->alpha += 0.05;
-	else if (key == KEY_E || key == KEY_B)
-		fdf->angles->alpha -= 0.05;
-	else if (key == KEY_N)
-		fdf->angles->beta += 0.05;
-	else if (key == KEY_M)
-		fdf->angles->beta -= 0.05;
 }
 
 static void	change_color_mode(t_fdf_params *fdf)
@@ -56,8 +44,6 @@ int	key_hook(int key, t_fdf_params *fdf)
 		fdf->translation_x -= 40;
 	else if (key == KEY_ARROW_DOWN || key == KEY_S)
 		fdf->translation_y -= 40;
-	else if (key == KEY_Q || key == KEY_E)
-		rotate(fdf, key);
 	else if (key == KEY_PLUS)
 		fdf->zoom += 10;
 	else if (key == KEY_MINUS)

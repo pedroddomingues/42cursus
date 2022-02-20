@@ -68,9 +68,12 @@ norminette_return:
 	@rm -f $(NORM)
 
 clean:
+	@make clean -C ./libft
 	@$(RM) $(OBJ_DIR)
+	@$(RM) valgrind*
 
 fclean:	clean
+	@make fclean -C ./libft
 	@$(RM) $(NAME)
 
 re:	fclean all

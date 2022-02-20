@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 23:36:46 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/13 21:09:32 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/02/20 14:17:18 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
-# include <error.h>
 
 # include "keys.h"
 # include "../libft/libft.h"

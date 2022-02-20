@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 18:39:21 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/08 19:29:26 by coder            ###   ########.fr       */
+/*   Updated: 2022/02/19 02:48:15 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,16 @@ static void	init(t_fdf_params *fdf)
 	new_window(fdf, "fdf - pehenriq");
 	fdf->angles = malloc(sizeof(t_angles));
 	if (!fdf->angles)
-		error(3, 0, "Error while allocating memory for angles.");
+		exit_program(fdf, 1);
 	fdf->angles->alpha = 1.05;
 	fdf->angles->beta = 0.65;
-	fdf->angles->gama = 0.8;
 	fdf->zoom = 50;
 	fdf->translation_x = 400;
 	fdf->translation_y = 100;
-	fdf->z_multiplier = 1;
 	fdf->map.x_max = -1;
 	fdf->map.y_max = 0;
-	fdf->map.z_max = 0;
 	fdf->map.z_min = 0;
+	fdf->map.z_max = 0;
 	fdf->map.x = 0;
 	fdf->instructions = 0;
 	fdf->color_mode = 0;
@@ -57,7 +55,10 @@ int	main(int argc, char **argv)
 
 	fdf = malloc(sizeof(t_fdf_params));
 	if (!fdf)
-		error(3, 0, "Error while creating fdf");
+	{
+		perror("Error\n");
+		exit(1);
+	}
 	check_initial_errors(fdf, argc, argv);
 	init(fdf);
 	print_fdf(fdf);
