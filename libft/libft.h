@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/02/20 14:05:28 by coder            ###   ########.fr       */
+/*   Updated: 2022/03/14 16:36:12 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,5 +166,7 @@ void	ft_free_split(char **split);
 char	*ft_ftoa(float number);
 
 int		ft_strendcmp(char *s1, char *s2);
+
+char	*ft_strappend(char *str, char add);
 
 #endif

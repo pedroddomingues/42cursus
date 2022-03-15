@@ -6,11 +6,15 @@
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 20:37:45 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/03/01 21:10:31 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/03/13 21:35:32 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
+#include <sys/wait.h>
 
 int	g_continue = 0;
 int	g_end = 0;

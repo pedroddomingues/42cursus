@@ -3,7 +3,7 @@ CC = gcc
 RM = rm -rf
 
 SRC_DIR	= src
-SRC = utils.c list.c
+SRC = list.c
 
 OBJ_DIR	= obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
@@ -11,12 +11,14 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 INCLUDE_DIR = ./include
 INCLUDE = minitalk.h
 
-MAIN =
+# MAIN =
 
-LIBFT =
-LIBS =
+LIBFT = ./libft/libft.a
+# LIBS = 
 
 NAME = server client
+
+BONUS = server_bonus client_bonus
 
 TEST = client_test mult_client
 
@@ -29,9 +31,9 @@ vpath %.h $(INCD_DIR)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ) $(INCD_DIR) $(addsuffix .c, $(addprefix $(SRC_DIR)/, $(NAME)))
+$(NAME):	$(OBJ) $(INCD_DIR) $(addsuffix .c, $(addprefix $(SRC_DIR)/, $(NAME))) $(LIBFT)
 	@echo "Compiling " $@
-	@$(CC) $(CFLAGS) $(addprefix $(SRC_DIR)/, $@).c $(OBJ) -o $@
+	@$(CC) $(CFLAGS) $(addprefix $(SRC_DIR)/, $@).c $(OBJ) $(LIBFT) -o $@
 	@echo "Done."
 
 $(OBJ_DIR)/%.o:	%.c
@@ -40,11 +42,23 @@ $(OBJ_DIR)/%.o:	%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Done."
 
+bonus:	$(BONUS)
+
+$(BONUS):	$(OBJ) $(INCD_DIR) $(addsuffix .c, $(addprefix $(SRC_DIR)/, $(BONUS))) $(LIBFT)
+	@echo "Compiling "$@
+	$(CC) $(CFLAGS) $(addprefix $(SRC_DIR)/, $@).c $(OBJ) $(LIBFT) -o $@
+	@echo "Done."
+
+$(LIBFT):
+	@echo "Compiling libft..."
+	@make -C ./libft
+	@echo "libft compiled successfully"
+
 test: all $(TEST)
 
 $(TEST): $(addsuffix .c, $(addprefix $(SRC_DIR)/, $(TEST)))
 	@echo "Compiling " $@
-	@$(CC) $(CFLAGS) $(addprefix $(SRC_DIR)/, $@).c $(OBJ) -o $@
+	@$(CC) $(CFLAGS) $(addprefix $(SRC_DIR)/, $@).c $(OBJ) $(LIBFT) -o $@
 	@echo "Done."
 
 
@@ -75,9 +89,11 @@ norminette_return:
 clean:
 	@$(RM) $(OBJ_DIR)
 	@$(RM) valgrind*
+	@make clean -C ./libft
 
 fclean:	clean
-	@$(RM) $(NAME) $(TEST)
+	@$(RM) $(NAME) $(TEST) $(LIBFT) $(BONUS)
+
 
 re:	fclean all
 
