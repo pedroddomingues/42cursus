@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 14:08:22 by coder             #+#    #+#             */
-/*   Updated: 2022/03/15 16:47:41 by coder            ###   ########.fr       */
+/*   Updated: 2022/03/21 00:02:00 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../include/minitalk_bonus.h"
 
 t_data	g_data;
 
@@ -21,7 +21,7 @@ static void	add_char(int c, int pid)
 
 	list = search_pid(g_data.messages, pid);
 	if (c == '\0' && list)
-		g_data.end = 1;
+		list->end = 1;
 	else
 	{
 		if (list)
@@ -62,15 +62,14 @@ static void	action_handler(int sig, siginfo_t *info, void *ucontext)
 	convert_bin2char(sig == SIGUSR2, info->si_pid);
 	usleep(500);
 	kill(info->si_pid, SIGUSR1);
-	if (g_data.end)
+	list = search_pid(g_data.messages, info->si_pid);
+	if (list && list->end)
 	{
-		list = search_pid(g_data.messages, info->si_pid);
 		ft_printf("Message from %d: %s\n", info->si_pid, list->message);
 		kill(info->si_pid, SIGUSR2);
 		free(list->message);
 		free(list);
 		g_data.messages = NULL;
-		g_data.end = 0;
 	}
 }
 

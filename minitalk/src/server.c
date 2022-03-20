@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 14:08:22 by coder             #+#    #+#             */
-/*   Updated: 2022/03/15 16:47:41 by coder            ###   ########.fr       */
+/*   Updated: 2022/03/21 00:15:56 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,62 +14,55 @@
 
 t_data	g_data;
 
-static void	add_char(int c, int pid)
+static void	add_char(int c)
 {
-	t_minitalk_list	*list;
-	char			*tmp;
+	char	*tmp;
 
-	list = search_pid(g_data.messages, pid);
-	if (c == '\0' && list)
+	if (c == '\0' && g_data.message)
 		g_data.end = 1;
 	else
 	{
-		if (list)
+		if (g_data.message)
 		{
-			tmp = ft_strappend(list->message, c);
-			free(list->message);
-			list->message = tmp;
+			tmp = ft_strappend(g_data.message, c);
+			free(g_data.message);
+			g_data.message = tmp;
 		}
 		else
 		{
-			list = add_list(g_data.messages, (char *) &c, pid);
-			if (!g_data.messages)
-				g_data.messages = list;
+			tmp = malloc(sizeof(char) * 2);
+			tmp[0] = c;
+			tmp[1] = '\0';
+			g_data.message = tmp;
 		}
 	}
 }
 
-static void	convert_bin2char(int bit, int pid)
+static void	convert_bin2char(int bit)
 {
-	static int	i = 10;
+	static int	i = 8;
 	static char	character = 0;
 
 	character += (bit << i);
 	i--;
 	if (i < 0)
 	{
-		add_char(character, pid);
+		add_char(character);
 		character = 0;
-		i = 10;
+		i = 8;
 	}
 }
 
 static void	action_handler(int sig, siginfo_t *info, void *ucontext)
 {
-	t_minitalk_list	*list;
-
 	(void) ucontext;
-	convert_bin2char(sig == SIGUSR2, info->si_pid);
-	usleep(500);
-	kill(info->si_pid, SIGUSR1);
+	convert_bin2char(sig == SIGUSR2);
 	if (g_data.end)
 	{
-		list = search_pid(g_data.messages, info->si_pid);
-		ft_printf("Message from %d: %s\n", info->si_pid, list->message);
-		kill(info->si_pid, SIGUSR2);
-		free(list->message);
-		free(list);
-		g_data.messages = NULL;
+		ft_printf("Message from %d: %s\n", info->si_pid,
+			g_data.message);
+		free(g_data.message);
+		g_data.message = NULL;
 		g_data.end = 0;
 	}
 }
@@ -78,11 +71,11 @@ int	main(void)
 {
 	struct sigaction	sa;
 
-	g_data.messages = NULL;
+	g_data.end = 0;
+	g_data.message = NULL;
 	ft_printf("SERVER PID: %d\n\n", getpid());
 	sa.sa_sigaction = action_handler;
 	sa.sa_flags = SA_SIGINFO;
-	sa.sa_flags += SA_NODEFER;
 	sigemptyset(&sa.sa_mask);
 	sigaddset(&sa.sa_mask, SIGUSR1);
 	sigaddset(&sa.sa_mask, SIGUSR2);

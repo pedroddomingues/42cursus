@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mult_client.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:52:08 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/03/13 21:34:51 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/03/18 19:45:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ int	main(int argc, char *argv[])
 			if (fork() == 0)
 			{
 				printf("(%d) Child %d created.\n\n", i + 1, getpid());
-				execl("/home/coder/42/tests/minitalk/client",
-					"/home/coder/42/tests/minitalk/client",
+				execl("/home/coder/42/42cursus/minitalk/client",
+					"/home/coder/42/42cursus/minitalk/client",
 					argv[2], argv[3], NULL);
 			}
 			sleep(1);

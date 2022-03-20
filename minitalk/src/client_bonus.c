@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 14:08:20 by coder             #+#    #+#             */
-/*   Updated: 2022/03/13 21:36:23 by pehenriq         ###   ########.fr       */
+/*   Updated: 2022/03/21 00:15:59 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../include/minitalk_bonus.h"
 
 int	g_continue = 0;
 
@@ -55,7 +55,7 @@ void	signal_handler(int sig, siginfo_t *info, void *context)
 	if (sig == SIGUSR1)
 		g_continue = 1;
 	else if (sig == SIGUSR2)
-		ft_printf("Message sent to %d!\n", info->si_pid);
+		ft_printf("Message sent to %d very quickly!\n", info->si_pid);
 }
 
 int	main(int argc, char *argv[])
@@ -74,5 +74,6 @@ int	main(int argc, char *argv[])
 	sigaddset(&action.sa_mask, SIGUSR2);
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-	send_message(atoi(argv[1]), argv[2]);
+	send_message(ft_atoi(argv[1]), argv[2]);
+	return (0);
 }

@@ -10,6 +10,7 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 INCLUDE_DIR = ./include
 INCLUDE = minitalk.h
+INCLUDE_BONUS = minitalk_bonus.h
 
 # MAIN =
 
@@ -46,7 +47,7 @@ bonus:	$(BONUS)
 
 $(BONUS):	$(OBJ) $(INCD_DIR) $(addsuffix .c, $(addprefix $(SRC_DIR)/, $(BONUS))) $(LIBFT)
 	@echo "Compiling "$@
-	$(CC) $(CFLAGS) $(addprefix $(SRC_DIR)/, $@).c $(OBJ) $(LIBFT) -o $@
+	@$(CC) $(CFLAGS) $(addprefix $(SRC_DIR)/, $@).c $(OBJ) $(LIBFT) -o $@
 	@echo "Done."
 
 $(LIBFT):

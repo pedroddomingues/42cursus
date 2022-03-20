@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:11:34 by coder             #+#    #+#             */
-/*   Updated: 2022/03/14 16:33:46 by coder            ###   ########.fr       */
+/*   Updated: 2022/03/18 19:38:12 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_minitalk_list	*create_list(char *message, int pid)
 		return (NULL);
 	list->message = ft_strdup(message);
 	list->pid = pid;
+	list->end = 0;
 	list->next = NULL;
 	return (list);
 }
