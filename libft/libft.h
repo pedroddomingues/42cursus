@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pehenriq <pehenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:30:28 by pehenriq          #+#    #+#             */
-/*   Updated: 2022/03/14 16:36:12 by coder            ###   ########.fr       */
+/*   Updated: 2022/04/17 23:09:41 by pehenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,10 +163,12 @@ int		ft_hexstrtoi(char *hex);
 
 void	ft_free_split(char **split);
 
-char	*ft_ftoa(float number);
+char	*ft_ftoa(float number, int precision);
 
 int		ft_strendcmp(char *s1, char *s2);
 
 char	*ft_strappend(char *str, char add);
+
+float	ft_pow(float base, int exp);
 
 #endif
