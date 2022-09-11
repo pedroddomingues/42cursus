@@ -15,13 +15,14 @@ INCLUDE_BONUS = minitalk_bonus.h
 # MAIN =
 
 LIBFT = ./libft/libft.a
-# LIBS =
+#LIBS =
+TEST_LIB = ./munit/munit.c
 
 NAME = server client
 
 BONUS = server_bonus client_bonus
 
-TEST = client_test mult_client
+TEST = test
 
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt
 
@@ -32,7 +33,7 @@ vpath %.h $(INCD_DIR)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ) $(INCD_DIR) $(addsuffix .c, $(addprefix $(SRC_DIR)/, $(NAME))) $(LIBFT)
+$(NAME):	$(OBJ) $(INCD_DIR) $(addsuffix .c, $(addprefix $(SRC_DIR)/, $(NAME))) $(LIBFT) $(LIBS)
 	@echo "Compiling " $@
 	@$(CC) $(CFLAGS) $(addprefix $(SRC_DIR)/, $@).c $(OBJ) $(LIBFT) -o $@
 	@echo "Done."
@@ -57,7 +58,7 @@ $(LIBFT):
 
 test: all $(TEST)
 
-$(TEST): $(addsuffix .c, $(addprefix $(SRC_DIR)/, $(TEST)))
+$(TEST): $(addsuffix .c, $(addprefix $(SRC_DIR)/test, $(TEST)))
 	@echo "Compiling " $@
 	@$(CC) $(CFLAGS) $(addprefix $(SRC_DIR)/, $@).c $(OBJ) $(LIBFT) -o $@
 	@echo "Done."
